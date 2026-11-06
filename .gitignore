@@ -1,0 +1,36 @@
+
+# Build output: Gradle per-module build/ directories, and the root `build` output
+build/
+.gradle/
+.kotlin/
+
+# Machine-specific Android SDK location (sdk.dir). Never committed.
+local.properties
+
+## IDEs
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+## Android build artefacts
+*.apk
+*.aab
+*.ap_
+*.dex
+captures/
+.cxx/
+.externalNativeBuild/
+
+
+## Local secrets and keys — never committed
+.env
+.env.local
+*.jks
+*.keystore
+*.pem
+*.p8
+*.p12
+
+## Logs and scratch
+*.log

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A library manifest merges into the host application's manifest. Anything declared here — a
+     permission, a component, an <application> attribute — becomes the host's, silently. So this file
+     declares nothing; Scripts/check-manifests.sh enforces that. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" />

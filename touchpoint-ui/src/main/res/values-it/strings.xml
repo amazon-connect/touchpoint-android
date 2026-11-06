@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Touchpoint web 1.0.4's own translations (src/utils/useCopy.ts), string for string. What web
+     leaves in English is English here too.
+     Generated from web's copy; edit there, or regenerate. -->
+<resources>
+    <string name="touchpoint_composer_send">Invia messaggio</string>
+    <string name="touchpoint_header_title">Assistente IA</string>
+    <string name="touchpoint_header_restart">Riavvia conversazione</string>
+    <string name="touchpoint_menu_restart">Riavvia conversazione</string>
+    <string name="touchpoint_menu_download">Scarica trascrizione</string>
+    <string name="touchpoint_menu_end">Termina conversazione</string>
+    <string name="touchpoint_confirm_end_title">Sei sicuro?</string>
+    <string name="touchpoint_confirm_end_body">Stai per terminare la conversazione corrente. Questa azione non può essere annullata.</string>
+    <string name="touchpoint_confirm_cancel">Annulla</string>
+    <string name="touchpoint_confirm_end">Termina conversazione</string>
+    <string name="touchpoint_action_start_new">Avvia nuova conversazione</string>
+    <string name="touchpoint_transcript_name_you">Tu</string>
+    <string name="touchpoint_transcript_name_ai">IA</string>
+    <string name="touchpoint_transcript_name_agent">Operatore</string>
+    <string name="touchpoint_announcement_received">Risposta ricevuta</string>
+    <string name="touchpoint_delivery_sending">Invio in corso</string>
+    <string name="touchpoint_delivery_sent">Inviato</string>
+    <string name="touchpoint_delivery_delivered">Consegnato</string>
+    <string name="touchpoint_delivery_read">Letto</string>
+    <string name="touchpoint_delivery_failed">Non riuscito</string>
+    <string name="touchpoint_guide_label">Guida</string>
+    <string name="touchpoint_guide_default_title">Guida</string>
+    <string name="touchpoint_guide_not_started">Non iniziato</string>
+    <string name="touchpoint_guide_in_progress">In corso</string>
+    <string name="touchpoint_guide_complete">Completato</string>
+    <string name="touchpoint_guide_loading">Caricamento della guida…</string>
+    <string name="touchpoint_guide_error">Impossibile caricare la guida</string>
+    <string name="touchpoint_guide_close">Chiudi</string>
+    <string name="touchpoint_authentication_heading">Autenticati</string>
+    <string name="touchpoint_authentication_authenticate">Autentica</string>
+    <string name="touchpoint_authentication_skip">Continua senza accedere</string>
+    <string name="touchpoint_authentication_locked_hint">Completa o salta l\'autenticazione prima di continuare.</string>
+    <string name="touchpoint_authentication_in_progress">Autenticazione in corso</string>
+    <string name="touchpoint_authentication_success">Autenticazione riuscita</string>
+    <string name="touchpoint_authentication_failed">Autenticazione non riuscita</string>
+    <string name="touchpoint_authentication_expired">Autenticazione scaduta</string>
+    <string name="touchpoint_authentication_cancelled">Autenticazione annullata</string>
+    <plurals name="touchpoint_announcement_choices">
+        <item quantity="one">%d opzione tra cui scegliere</item>
+        <item quantity="many">%d opzioni tra cui scegliere</item>
+        <item quantity="other">%d opzioni tra cui scegliere</item>
+    </plurals>
+</resources>

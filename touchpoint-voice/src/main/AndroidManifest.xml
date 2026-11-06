@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A library manifest merges into the host application's manifest, so this one declares nothing.
+     Scripts/check-manifests.sh enforces that.
+
+     The one entry is a removal, not a declaration. The Chime SDK declares CAMERA for video; Touchpoint
+     voice is audio-only, so without this every host linking voice would be made to declare a camera
+     permission it never uses. A library manifest outranks its own dependencies' at the host's merge,
+     which is what lets this strip Chime's entry. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission
+        android:name="android.permission.CAMERA"
+        tools:node="remove" />
+</manifest>

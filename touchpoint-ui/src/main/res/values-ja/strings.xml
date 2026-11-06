@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Touchpoint web 1.0.4's own translations (src/utils/useCopy.ts), string for string. What web
+     leaves in English is English here too.
+     Generated from web's copy; edit there, or regenerate. -->
+<resources>
+    <string name="touchpoint_composer_send">メッセージを送信</string>
+    <string name="touchpoint_header_title">AI アシスタント</string>
+    <string name="touchpoint_header_restart">会話を再開</string>
+    <string name="touchpoint_menu_restart">会話を再開</string>
+    <string name="touchpoint_menu_download">履歴をダウンロード</string>
+    <string name="touchpoint_menu_end">会話を終了</string>
+    <string name="touchpoint_confirm_end_title">よろしいですか？</string>
+    <string name="touchpoint_confirm_end_body">現在の会話を終了しようとしています。この操作は取り消せません。</string>
+    <string name="touchpoint_confirm_cancel">キャンセル</string>
+    <string name="touchpoint_confirm_end">会話を終了</string>
+    <string name="touchpoint_action_start_new">新しい会話を開始</string>
+    <string name="touchpoint_transcript_name_you">あなた</string>
+    <string name="touchpoint_transcript_name_ai">AI</string>
+    <string name="touchpoint_transcript_name_agent">オペレーター</string>
+    <string name="touchpoint_announcement_received">応答を受信しました</string>
+    <string name="touchpoint_delivery_sending">送信中</string>
+    <string name="touchpoint_delivery_sent">送信済み</string>
+    <string name="touchpoint_delivery_delivered">配信済み</string>
+    <string name="touchpoint_delivery_read">既読</string>
+    <string name="touchpoint_delivery_failed">失敗</string>
+    <string name="touchpoint_guide_label">ガイド</string>
+    <string name="touchpoint_guide_default_title">ガイド</string>
+    <string name="touchpoint_guide_not_started">未開始</string>
+    <string name="touchpoint_guide_in_progress">進行中</string>
+    <string name="touchpoint_guide_complete">完了</string>
+    <string name="touchpoint_guide_loading">ガイドを読み込んでいます…</string>
+    <string name="touchpoint_guide_error">ガイドを読み込めませんでした</string>
+    <string name="touchpoint_guide_close">閉じる</string>
+    <string name="touchpoint_authentication_heading">認証してください</string>
+    <string name="touchpoint_authentication_authenticate">認証する</string>
+    <string name="touchpoint_authentication_skip">サインインせずに続行</string>
+    <string name="touchpoint_authentication_locked_hint">続行する前に認証を完了またはスキップしてください。</string>
+    <string name="touchpoint_authentication_in_progress">認証中</string>
+    <string name="touchpoint_authentication_success">認証に成功しました</string>
+    <string name="touchpoint_authentication_failed">認証に失敗しました</string>
+    <string name="touchpoint_authentication_expired">認証の有効期限が切れました</string>
+    <string name="touchpoint_authentication_cancelled">認証がキャンセルされました</string>
+    <plurals name="touchpoint_announcement_choices">
+        <item quantity="other">選択肢が%d件あります</item>
+    </plurals>
+</resources>

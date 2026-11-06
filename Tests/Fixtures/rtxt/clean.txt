@@ -1,0 +1,4 @@
+int string touchpoint_greeting 0x7f010000
+int color touchpoint_accent 0x7f020000
+int[] styleable TouchpointView { 0x7f030000 }
+int styleable TouchpointView_accent 0

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Touchpoint web 1.0.4's own translations (src/utils/useCopy.ts), string for string. What web
+     leaves in English is English here too.
+     Generated from web's copy; edit there, or regenerate. -->
+<resources>
+    <string name="touchpoint_composer_send">Envoyer le message</string>
+    <string name="touchpoint_header_title">Assistant IA</string>
+    <string name="touchpoint_header_restart">Redémarrer la conversation</string>
+    <string name="touchpoint_menu_restart">Redémarrer la conversation</string>
+    <string name="touchpoint_menu_download">Télécharger la transcription</string>
+    <string name="touchpoint_menu_end">Terminer la conversation</string>
+    <string name="touchpoint_confirm_end_title">Êtes-vous sûr?</string>
+    <string name="touchpoint_confirm_end_body">Vous êtes sur le point de terminer la conversation en cours. Cette action est irréversible.</string>
+    <string name="touchpoint_confirm_cancel">Annuler</string>
+    <string name="touchpoint_confirm_end">Terminer la conversation</string>
+    <string name="touchpoint_action_start_new">Démarrer une nouvelle conversation</string>
+    <string name="touchpoint_transcript_name_you">Vous</string>
+    <string name="touchpoint_transcript_name_ai">IA</string>
+    <string name="touchpoint_transcript_name_agent">Agent</string>
+    <string name="touchpoint_announcement_received">Réponse reçue</string>
+    <string name="touchpoint_delivery_sending">Envoi en cours</string>
+    <string name="touchpoint_delivery_sent">Envoyé</string>
+    <string name="touchpoint_delivery_delivered">Distribué</string>
+    <string name="touchpoint_delivery_read">Lu</string>
+    <string name="touchpoint_delivery_failed">Échec</string>
+    <string name="touchpoint_guide_label">Guide</string>
+    <string name="touchpoint_guide_default_title">Guide</string>
+    <string name="touchpoint_guide_not_started">Non commencé</string>
+    <string name="touchpoint_guide_in_progress">En cours</string>
+    <string name="touchpoint_guide_complete">Terminé</string>
+    <string name="touchpoint_guide_loading">Chargement du guide…</string>
+    <string name="touchpoint_guide_error">Impossible de charger le guide</string>
+    <string name="touchpoint_guide_close">Fermer</string>
+    <string name="touchpoint_authentication_heading">Veuillez vous authentifier</string>
+    <string name="touchpoint_authentication_authenticate">S\'authentifier</string>
+    <string name="touchpoint_authentication_skip">Continuer sans se connecter</string>
+    <string name="touchpoint_authentication_locked_hint">Terminez ou ignorez l\'authentification avant de continuer.</string>
+    <string name="touchpoint_authentication_in_progress">Authentification en cours</string>
+    <string name="touchpoint_authentication_success">Authentification réussie</string>
+    <string name="touchpoint_authentication_failed">Échec de l\'authentification</string>
+    <string name="touchpoint_authentication_expired">Authentification expirée</string>
+    <string name="touchpoint_authentication_cancelled">Authentification annulée</string>
+    <plurals name="touchpoint_announcement_choices">
+        <item quantity="one">%d option proposée</item>
+        <item quantity="many">%d options proposées</item>
+        <item quantity="other">%d options proposées</item>
+    </plurals>
+</resources>

@@ -1,0 +1,40 @@
+{
+ "modules": {
+  "touchpoint-core": [
+   "org.jetbrains.kotlin:kotlin-stdlib"
+  ],
+  "touchpoint-core-android": [
+   "project:touchpoint-core",
+   "org.jetbrains.kotlin:kotlin-stdlib"
+  ],
+  "touchpoint-livesync": [
+   "project:touchpoint-core",
+   "project:touchpoint-core-android"
+  ],
+  "touchpoint-chat": [
+   "project:touchpoint-core-android",
+   "software.aws.connect:amazon-connect-chat-android",
+   "aws.smithy.kotlin:runtime-core",
+   "aws.sdk.kotlin:connectparticipant"
+  ],
+  "touchpoint-voice": [
+   "project:touchpoint-core-android",
+   "software.aws.chimesdk:amazon-chime-sdk",
+   "software.aws.chimesdk:amazon-chime-sdk-media"
+  ],
+  "touchpoint-voice-telecom": [
+   "project:touchpoint-voice",
+   "software.aws.chimesdk:amazon-chime-sdk",
+   "software.aws.chimesdk:amazon-chime-sdk-media",
+   "androidx.core:core-telecom"
+  ],
+  "touchpoint-development": [
+   "project:touchpoint-core",
+   "org.jetbrains.kotlin:kotlin-stdlib"
+  ],
+  "touchpoint-ui": [
+   "project:touchpoint-core-android",
+   "androidx.compose.foundation:foundation"
+  ]
+ }
+}

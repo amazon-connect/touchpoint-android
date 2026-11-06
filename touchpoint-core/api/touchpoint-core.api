@@ -1,0 +1,1652 @@
+public final class com/amazon/connect/touchpoint/core/Attachment {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/Attachment$Companion;
+	public static final field UNKNOWN_TYPE_NAME Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContentType ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSizeBytes ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/Attachment$Companion {
+}
+
+public final class com/amazon/connect/touchpoint/core/AttachmentUpload {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/AttachmentUpload$Companion;
+	public static final field MAX_BYTES J
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;JLkotlin/jvm/functions/Function0;)V
+	public final fun getContentType ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getOpen ()Lkotlin/jvm/functions/Function0;
+	public final fun getSizeBytes ()J
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/AttachmentUpload$Companion {
+}
+
+public final class com/amazon/connect/touchpoint/core/AuthenticationCard {
+	public fun <init> (Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;Ljava/util/UUID;)V
+	public final fun component1 ()Ljava/util/UUID;
+	public final fun component2 ()Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+	public final fun component3 ()Ljava/util/UUID;
+	public final fun copy (Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;Ljava/util/UUID;)Lcom/amazon/connect/touchpoint/core/AuthenticationCard;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/AuthenticationCard;Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;Ljava/util/UUID;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/AuthenticationCard;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAfterMessageId ()Ljava/util/UUID;
+	public final fun getId ()Ljava/util/UUID;
+	public final fun getStatus ()Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/AuthenticationCompletion {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/AuthenticationCompletion;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/AuthenticationCompletion;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/AuthenticationCompletion;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getError ()Ljava/lang/String;
+	public final fun getErrorDescription ()Ljava/lang/String;
+	public final fun getState ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/AuthenticationRelaying {
+	public abstract fun completeAuthentication (Lcom/amazon/connect/touchpoint/core/AuthenticationCompletion;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/AuthenticationRequest {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/AuthenticationRequest;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/AuthenticationRequest;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/AuthenticationRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRedirectUri ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/AuthenticationStatus : java/lang/Enum {
+	public static final field CANCELLED Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+	public static final field EXPIRED Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+	public static final field FAILED Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+	public static final field IN_PROGRESS Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+	public static final field PROMPT Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+	public static final field SUCCESS Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun isPending ()Z
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+}
+
+public final class com/amazon/connect/touchpoint/core/ChatContactCredentials : com/amazon/connect/touchpoint/core/ExpiringCredentials {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/time/Instant;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;)Lcom/amazon/connect/touchpoint/core/ChatContactCredentials;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ChatContactCredentials;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ChatContactCredentials;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContactId ()Ljava/lang/String;
+	public fun getExpiresAt ()Ljava/time/Instant;
+	public final fun getParticipantId ()Ljava/lang/String;
+	public final fun getParticipantToken ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ChatContactRequest {
+	public fun <init> (Ljava/lang/String;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Ljava/util/Map;)Lcom/amazon/connect/touchpoint/core/ChatContactRequest;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ChatContactRequest;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ChatContactRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/Map;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/Citation {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/Citation$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/Citation;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/Citation;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/Citation;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSnippet ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class com/amazon/connect/touchpoint/core/Citation$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/Citation$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/amazon/connect/touchpoint/core/Citation;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/amazon/connect/touchpoint/core/Citation;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/amazon/connect/touchpoint/core/Citation$Companion {
+	public final fun encode (Ljava/util/List;)Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/amazon/connect/touchpoint/core/ConsentPrompt {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/ConsentPrompt;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ConsentPrompt;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ConsentPrompt;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDataDescription ()Ljava/lang/String;
+	public final fun getPrivacyPolicyUrl ()Ljava/lang/String;
+	public final fun getRecipient ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ConsentStore {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/SecureStore;Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V
+	public synthetic fun <init> (Lcom/amazon/connect/touchpoint/core/SecureStore;Ljava/lang/String;Lkotlin/jvm/functions/Function0;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun decidedAt (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun decision (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun record (Lcom/amazon/connect/touchpoint/core/ConsentStore$Decision;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun reset (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/ConsentStore$Decision : java/lang/Enum {
+	public static final field DENIED Lcom/amazon/connect/touchpoint/core/ConsentStore$Decision;
+	public static final field GRANTED Lcom/amazon/connect/touchpoint/core/ConsentStore$Decision;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/ConsentStore$Decision;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/ConsentStore$Decision;
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/ContactEvent {
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$AuthenticationChanged : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/AuthenticationCard;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/AuthenticationCard;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/AuthenticationCard;)Lcom/amazon/connect/touchpoint/core/ContactEvent$AuthenticationChanged;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$AuthenticationChanged;Lcom/amazon/connect/touchpoint/core/AuthenticationCard;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$AuthenticationChanged;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCard ()Lcom/amazon/connect/touchpoint/core/AuthenticationCard;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$ContactEnded : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/EndReason;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/EndReason;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/EndReason;)Lcom/amazon/connect/touchpoint/core/ContactEvent$ContactEnded;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$ContactEnded;Lcom/amazon/connect/touchpoint/core/EndReason;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$ContactEnded;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReason ()Lcom/amazon/connect/touchpoint/core/EndReason;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$DeliveryStateChanged : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/DeliveryUpdate;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/DeliveryUpdate;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/DeliveryUpdate;)Lcom/amazon/connect/touchpoint/core/ContactEvent$DeliveryStateChanged;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$DeliveryStateChanged;Lcom/amazon/connect/touchpoint/core/DeliveryUpdate;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$DeliveryStateChanged;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getUpdate ()Lcom/amazon/connect/touchpoint/core/DeliveryUpdate;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$Failed : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/TouchpointException;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/TouchpointException;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/TouchpointException;)Lcom/amazon/connect/touchpoint/core/ContactEvent$Failed;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$Failed;Lcom/amazon/connect/touchpoint/core/TouchpointException;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$Failed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Lcom/amazon/connect/touchpoint/core/TouchpointException;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$InterimMessage : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/ContactEvent$InterimMessage;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$InterimMessage;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$InterimMessage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$LiveSyncDispatchChanged : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/DispatchState;Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/DispatchState;
+	public final fun component2 ()Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/DispatchState;Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;)Lcom/amazon/connect/touchpoint/core/ContactEvent$LiveSyncDispatchChanged;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$LiveSyncDispatchChanged;Lcom/amazon/connect/touchpoint/core/DispatchState;Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$LiveSyncDispatchChanged;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReason ()Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;
+	public final fun getState ()Lcom/amazon/connect/touchpoint/core/DispatchState;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$MessageReceived : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/Message;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/Message;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/Message;)Lcom/amazon/connect/touchpoint/core/ContactEvent$MessageReceived;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$MessageReceived;Lcom/amazon/connect/touchpoint/core/Message;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$MessageReceived;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Lcom/amazon/connect/touchpoint/core/Message;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$Notice : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/TranscriptNotice;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/TranscriptNotice;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/TranscriptNotice;)Lcom/amazon/connect/touchpoint/core/ContactEvent$Notice;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$Notice;Lcom/amazon/connect/touchpoint/core/TranscriptNotice;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$Notice;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getNotice ()Lcom/amazon/connect/touchpoint/core/TranscriptNotice;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$ParticipantsChanged : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/ParticipantSet;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/ParticipantSet;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/ParticipantSet;)Lcom/amazon/connect/touchpoint/core/ContactEvent$ParticipantsChanged;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$ParticipantsChanged;Lcom/amazon/connect/touchpoint/core/ParticipantSet;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$ParticipantsChanged;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getParticipants ()Lcom/amazon/connect/touchpoint/core/ParticipantSet;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$PermissionRequired : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/Permission;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/Permission;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/Permission;)Lcom/amazon/connect/touchpoint/core/ContactEvent$PermissionRequired;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$PermissionRequired;Lcom/amazon/connect/touchpoint/core/Permission;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$PermissionRequired;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPermission ()Lcom/amazon/connect/touchpoint/core/Permission;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$StateChanged : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/ContactState;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/ContactState;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/ContactState;)Lcom/amazon/connect/touchpoint/core/ContactEvent$StateChanged;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$StateChanged;Lcom/amazon/connect/touchpoint/core/ContactState;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$StateChanged;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getState ()Lcom/amazon/connect/touchpoint/core/ContactState;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$TranscriptReconciled : com/amazon/connect/touchpoint/core/ContactEvent {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/ContactEvent$TranscriptReconciled;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactEvent$Typing : com/amazon/connect/touchpoint/core/ContactEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/ParticipantRole;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/ParticipantRole;)Lcom/amazon/connect/touchpoint/core/ContactEvent$Typing;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactEvent$Typing;Lcom/amazon/connect/touchpoint/core/ParticipantRole;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactEvent$Typing;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRole ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/ContactState {
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactState$Connected : com/amazon/connect/touchpoint/core/ContactState {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/ContactState$Connected;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactState$Connecting : com/amazon/connect/touchpoint/core/ContactState {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/ContactState$Connecting;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactState$Ended : com/amazon/connect/touchpoint/core/ContactState {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/EndReason;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/EndReason;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/EndReason;)Lcom/amazon/connect/touchpoint/core/ContactState$Ended;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactState$Ended;Lcom/amazon/connect/touchpoint/core/EndReason;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactState$Ended;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReason ()Lcom/amazon/connect/touchpoint/core/EndReason;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactState$Idle : com/amazon/connect/touchpoint/core/ContactState {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/ContactState$Idle;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactState$Reconnecting : com/amazon/connect/touchpoint/core/ContactState {
+	public fun <init> (I)V
+	public final fun component1 ()I
+	public final fun copy (I)Lcom/amazon/connect/touchpoint/core/ContactState$Reconnecting;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ContactState$Reconnecting;IILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ContactState$Reconnecting;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttempt ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactState$Suspended : com/amazon/connect/touchpoint/core/ContactState {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/ContactState$Suspended;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/ContactTransport {
+	public fun attachmentUrl (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun beginAuthentication (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun cancelAuthentication (ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun cancelAuthentication$default (Lcom/amazon/connect/touchpoint/core/ContactTransport;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public fun completeAuthentication (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun connect (Lcom/amazon/connect/touchpoint/core/ExpiringCredentials;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun describeView (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun disconnect (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun fetchTranscript (Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun fetchTranscriptEntries (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public fun markRead (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun release (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun send (Lcom/amazon/connect/touchpoint/core/OutboundMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun sendTyping (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun uploadAttachment (Lcom/amazon/connect/touchpoint/core/AttachmentUpload;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/ContactTransport$DefaultImpls {
+	public static fun attachmentUrl (Lcom/amazon/connect/touchpoint/core/ContactTransport;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun beginAuthentication (Lcom/amazon/connect/touchpoint/core/ContactTransport;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun cancelAuthentication (Lcom/amazon/connect/touchpoint/core/ContactTransport;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun cancelAuthentication$default (Lcom/amazon/connect/touchpoint/core/ContactTransport;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static fun completeAuthentication (Lcom/amazon/connect/touchpoint/core/ContactTransport;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun describeView (Lcom/amazon/connect/touchpoint/core/ContactTransport;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun fetchTranscript (Lcom/amazon/connect/touchpoint/core/ContactTransport;Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun fetchTranscriptEntries (Lcom/amazon/connect/touchpoint/core/ContactTransport;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun markRead (Lcom/amazon/connect/touchpoint/core/ContactTransport;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun release (Lcom/amazon/connect/touchpoint/core/ContactTransport;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun sendTyping (Lcom/amazon/connect/touchpoint/core/ContactTransport;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun uploadAttachment (Lcom/amazon/connect/touchpoint/core/ContactTransport;Lcom/amazon/connect/touchpoint/core/AttachmentUpload;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/ConversationRecord {
+	public fun <init> (Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/Modality;JLcom/amazon/connect/touchpoint/core/ParticipantSet;ZLjava/time/Instant;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/Modality;JLcom/amazon/connect/touchpoint/core/ParticipantSet;ZLjava/time/Instant;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/amazon/connect/touchpoint/core/Modality;
+	public final fun component3 ()J
+	public final fun component4 ()Lcom/amazon/connect/touchpoint/core/ParticipantSet;
+	public final fun component5 ()Z
+	public final fun component6 ()Ljava/time/Instant;
+	public final fun component7 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/Modality;JLcom/amazon/connect/touchpoint/core/ParticipantSet;ZLjava/time/Instant;Ljava/util/Map;)Lcom/amazon/connect/touchpoint/core/ConversationRecord;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ConversationRecord;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/Modality;JLcom/amazon/connect/touchpoint/core/ParticipantSet;ZLjava/time/Instant;Ljava/util/Map;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ConversationRecord;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContactId ()Ljava/lang/String;
+	public final fun getHumanAgentPresent ()Z
+	public final fun getLastActivity ()Ljava/time/Instant;
+	public final fun getLastSequence ()J
+	public final fun getModality ()Lcom/amazon/connect/touchpoint/core/Modality;
+	public final fun getParticipantNames ()Ljava/util/Map;
+	public final fun getParticipants ()Lcom/amazon/connect/touchpoint/core/ParticipantSet;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ConversationStore {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/ConversationStore$Companion;
+	public static final field ENCRYPTION_KEY_SECURE_STORE_KEY Ljava/lang/String;
+	public static final field MAX_PAGE I
+	public final fun allContactIds (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun append (Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/StoredMessage;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun applyReceipt (Ljava/lang/String;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/ReceiptKind;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun checkpoint (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun close (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun conversation (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteAllConversations (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteConversation (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getLastOpenOutcome ()Lcom/amazon/connect/touchpoint/core/ConversationStore$OpenOutcome;
+	public final fun getUndecryptableRowsSkipped ()I
+	public final fun humanAgentPresent (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun isOpen ()Z
+	public final fun isPending (Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun messageIdForAttachment (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun messages (Ljava/lang/String;Ljava/util/UUID;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun messages (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun outboxSnapshot (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun pendingClientIds (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun pendingOutbox (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun pruneExpired (Ljava/time/Instant;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun pruneExpired$default (Lcom/amazon/connect/touchpoint/core/ConversationStore;Ljava/time/Instant;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun setParticipants (Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/ParticipantSet;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun updateDeliveryState (Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/DeliveryState;Ljava/lang/String;Ljava/lang/Long;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun updateDeliveryState$default (Lcom/amazon/connect/touchpoint/core/ConversationStore;Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/DeliveryState;Ljava/lang/String;Ljava/lang/Long;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun upsertConversation (Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/Modality;Ljava/time/Instant;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun upsertConversation$default (Lcom/amazon/connect/touchpoint/core/ConversationStore;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/Modality;Ljava/time/Instant;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome {
+}
+
+public final class com/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome$Adopted : com/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome {
+	public fun <init> (Ljava/util/UUID;)V
+	public final fun component1 ()Ljava/util/UUID;
+	public final fun copy (Ljava/util/UUID;)Lcom/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome$Adopted;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome$Adopted;Ljava/util/UUID;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome$Adopted;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getClientMessageId ()Ljava/util/UUID;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome$Appended : com/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome$Appended;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome$Duplicate : com/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/ConversationStore$AppendOutcome$Duplicate;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ConversationStore$Companion {
+	public final fun getDEFAULT_RETENTION ()Ljava/time/Duration;
+	public final fun open (Ljava/io/File;Lcom/amazon/connect/touchpoint/core/SecureStore;Landroidx/sqlite/SQLiteDriver;Ljava/time/Duration;Lkotlin/jvm/functions/Function0;Lkotlinx/coroutines/CoroutineDispatcher;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun open$default (Lcom/amazon/connect/touchpoint/core/ConversationStore$Companion;Ljava/io/File;Lcom/amazon/connect/touchpoint/core/SecureStore;Landroidx/sqlite/SQLiteDriver;Ljava/time/Duration;Lkotlin/jvm/functions/Function0;Lkotlinx/coroutines/CoroutineDispatcher;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/ConversationStore$OpenOutcome : java/lang/Enum {
+	public static final field OPENED Lcom/amazon/connect/touchpoint/core/ConversationStore$OpenOutcome;
+	public static final field REBUILT_AFTER_FAILURE Lcom/amazon/connect/touchpoint/core/ConversationStore$OpenOutcome;
+	public static final field RESET_AFTER_KEY_LOSS Lcom/amazon/connect/touchpoint/core/ConversationStore$OpenOutcome;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/ConversationStore$OpenOutcome;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/ConversationStore$OpenOutcome;
+}
+
+public final class com/amazon/connect/touchpoint/core/ConversationStore$OutboxSnapshot {
+	public fun <init> (Ljava/util/List;Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;Ljava/util/List;)Lcom/amazon/connect/touchpoint/core/ConversationStore$OutboxSnapshot;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ConversationStore$OutboxSnapshot;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ConversationStore$OutboxSnapshot;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSendable ()Ljava/util/List;
+	public final fun getUnreadable ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/CredentialBroker : com/amazon/connect/touchpoint/core/LiveSyncCredentialSource {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/CredentialBroker$Companion;
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/TouchpointBackend;Lcom/amazon/connect/touchpoint/core/SecureStore;DLkotlin/jvm/functions/Function0;)V
+	public synthetic fun <init> (Lcom/amazon/connect/touchpoint/core/TouchpointBackend;Lcom/amazon/connect/touchpoint/core/SecureStore;DLkotlin/jvm/functions/Function0;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun forgetContactCredentials (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun invalidateLiveSyncCredentials (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun liveSyncCredentials (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun startChatContact (Lcom/amazon/connect/touchpoint/core/ChatContactRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun startVoiceContact (Lcom/amazon/connect/touchpoint/core/VoiceContactRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun storedChatCredentials (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/CredentialBroker$Companion {
+	public final fun refreshFailurePolicy (Lcom/amazon/connect/touchpoint/core/Modality;)Lcom/amazon/connect/touchpoint/core/CredentialBroker$RefreshFailurePolicy;
+}
+
+public final class com/amazon/connect/touchpoint/core/CredentialBroker$RefreshFailurePolicy : java/lang/Enum {
+	public static final field END_CONTACT Lcom/amazon/connect/touchpoint/core/CredentialBroker$RefreshFailurePolicy;
+	public static final field RETAIN_AND_RECONNECT Lcom/amazon/connect/touchpoint/core/CredentialBroker$RefreshFailurePolicy;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/CredentialBroker$RefreshFailurePolicy;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/CredentialBroker$RefreshFailurePolicy;
+}
+
+public final class com/amazon/connect/touchpoint/core/DeepLinkContactIdResolver : com/amazon/connect/touchpoint/core/TouchpointContactIdResolver {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/DeepLinkContactIdResolver$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun resolveContactId (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/DeepLinkContactIdResolver$Companion {
+	public final fun contactId (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public static synthetic fun contactId$default (Lcom/amazon/connect/touchpoint/core/DeepLinkContactIdResolver$Companion;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/DeliveryState : java/lang/Enum {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/DeliveryState$Companion;
+	public static final field DELIVERED Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public static final field FAILED Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public static final field READ Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public static final field SENDING Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public static final field SENT Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public final fun canTransitionTo (Lcom/amazon/connect/touchpoint/core/DeliveryState;)Z
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getRawValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/DeliveryState;
+}
+
+public final class com/amazon/connect/touchpoint/core/DeliveryState$Companion {
+	public final fun fromRawValue (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/DeliveryState;
+}
+
+public final class com/amazon/connect/touchpoint/core/DeliveryUpdate {
+	public synthetic fun <init> (Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/DeliveryState;Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/DeliveryState;Ljava/lang/String;Ljava/lang/Long;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/UUID;
+	public final fun component2 ()Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public final fun component3-YNDpY3k ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/Long;
+	public final fun copy-ncOENOA (Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/DeliveryState;Ljava/lang/String;Ljava/lang/Long;)Lcom/amazon/connect/touchpoint/core/DeliveryUpdate;
+	public static synthetic fun copy-ncOENOA$default (Lcom/amazon/connect/touchpoint/core/DeliveryUpdate;Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/DeliveryState;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/DeliveryUpdate;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getClientMessageId ()Ljava/util/UUID;
+	public final fun getSequence ()Ljava/lang/Long;
+	public final fun getServerMessageId-YNDpY3k ()Ljava/lang/String;
+	public final fun getState ()Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/Direction : java/lang/Enum {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/Direction$Companion;
+	public static final field INBOUND Lcom/amazon/connect/touchpoint/core/Direction;
+	public static final field OUTBOUND Lcom/amazon/connect/touchpoint/core/Direction;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getRawValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/Direction;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/Direction;
+}
+
+public final class com/amazon/connect/touchpoint/core/Direction$Companion {
+	public final fun fromRawValue (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/Direction;
+}
+
+public final class com/amazon/connect/touchpoint/core/DispatchChangeReason : java/lang/Enum {
+	public static final field HUMAN_AGENT_JOINED Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;
+	public static final field HUMAN_AGENT_LEFT Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;
+	public static final field RESUMED_UNRECONCILED Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;
+	public static final field TRANSCRIPT_RECONCILED Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;
+}
+
+public final class com/amazon/connect/touchpoint/core/DispatchState : java/lang/Enum {
+	public static final field ENABLED Lcom/amazon/connect/touchpoint/core/DispatchState;
+	public static final field SUSPENDED Lcom/amazon/connect/touchpoint/core/DispatchState;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/DispatchState;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/DispatchState;
+}
+
+public final class com/amazon/connect/touchpoint/core/EndReason : java/lang/Enum {
+	public static final field AGENT_ENDED Lcom/amazon/connect/touchpoint/core/EndReason;
+	public static final field CONNECTION_LOST Lcom/amazon/connect/touchpoint/core/EndReason;
+	public static final field CREDENTIAL_VENDING_FAILED Lcom/amazon/connect/touchpoint/core/EndReason;
+	public static final field CUSTOMER_ENDED Lcom/amazon/connect/touchpoint/core/EndReason;
+	public static final field SYSTEM_ENDED Lcom/amazon/connect/touchpoint/core/EndReason;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/EndReason;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/EndReason;
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/ExpiringCredentials {
+	public abstract fun getExpiresAt ()Ljava/time/Instant;
+}
+
+public final class com/amazon/connect/touchpoint/core/InMemorySecureStore : com/amazon/connect/touchpoint/core/SecureStore {
+	public fun <init> ()V
+	public final fun allAccessibility (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun delete (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun get (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun set (Ljava/lang/String;[BLcom/amazon/connect/touchpoint/core/SecureStoreAccessibility;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/IncomingMessages {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;Lcom/amazon/connect/touchpoint/core/IncomingMessages$Origin;)V
+	public final fun getContactId ()Ljava/lang/String;
+	public final fun getMessages ()Ljava/util/List;
+	public final fun getOrigin ()Lcom/amazon/connect/touchpoint/core/IncomingMessages$Origin;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/IncomingMessages$Origin : java/lang/Enum {
+	public static final field CATCH_UP Lcom/amazon/connect/touchpoint/core/IncomingMessages$Origin;
+	public static final field LIVE Lcom/amazon/connect/touchpoint/core/IncomingMessages$Origin;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/IncomingMessages$Origin;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/IncomingMessages$Origin;
+}
+
+public final class com/amazon/connect/touchpoint/core/InteractiveContent {
+	public static final field CHOICE_MAX_LENGTH I
+	public static final field CHOICE_TEMPLATE Ljava/lang/String;
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/InteractiveContent$Companion;
+	public static final field SLOT_TEMPLATE Ljava/lang/String;
+	public static final field VIEW_RESPONSE_TEMPLATE Ljava/lang/String;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/InteractiveContent;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/InteractiveContent;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/InteractiveContent;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRawJson ()Ljava/lang/String;
+	public final fun getTemplateType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class com/amazon/connect/touchpoint/core/InteractiveContent$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/InteractiveContent$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lcom/amazon/connect/touchpoint/core/InteractiveContent;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lcom/amazon/connect/touchpoint/core/InteractiveContent;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class com/amazon/connect/touchpoint/core/InteractiveContent$Companion {
+	public final fun choiceText (Ljava/lang/String;)Ljava/lang/String;
+	public final fun encode (Lcom/amazon/connect/touchpoint/core/InteractiveContent;)Ljava/lang/String;
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public abstract interface annotation class com/amazon/connect/touchpoint/core/InternalTouchpointApi : java/lang/annotation/Annotation {
+}
+
+public final class com/amazon/connect/touchpoint/core/LiveSyncChannel {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/LiveSyncChannel$Companion;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getKey ()Ljava/lang/String;
+	public final fun getLanguageTag ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/LiveSyncChannel$Companion {
+	public final fun from (Ljava/util/Locale;Ljava/util/Map;)Lcom/amazon/connect/touchpoint/core/LiveSyncChannel;
+	public static synthetic fun from$default (Lcom/amazon/connect/touchpoint/core/LiveSyncChannel$Companion;Ljava/util/Locale;Ljava/util/Map;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/LiveSyncChannel;
+}
+
+public abstract class com/amazon/connect/touchpoint/core/LiveSyncChannel$MappingException : java/lang/Exception {
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class com/amazon/connect/touchpoint/core/LiveSyncChannel$MappingException$InvalidOverride : com/amazon/connect/touchpoint/core/LiveSyncChannel$MappingException {
+	public fun <init> ()V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+}
+
+public final class com/amazon/connect/touchpoint/core/LiveSyncChannel$MappingException$UndeterminedLanguage : com/amazon/connect/touchpoint/core/LiveSyncChannel$MappingException {
+	public fun <init> ()V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/LiveSyncControl {
+	public abstract fun resumeDispatch (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun suspendDispatch (Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun teardown (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/LiveSyncCredentialSource {
+	public abstract fun invalidateLiveSyncCredentials (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun liveSyncCredentials (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/LiveSyncCredentials : com/amazon/connect/touchpoint/core/ExpiringCredentials {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/time/Instant;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;)Lcom/amazon/connect/touchpoint/core/LiveSyncCredentials;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/LiveSyncCredentials;Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/LiveSyncCredentials;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getApiKey ()Ljava/lang/String;
+	public final fun getDeploymentKey ()Ljava/lang/String;
+	public fun getExpiresAt ()Ljava/time/Instant;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/Message {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/StoredMessage;)V
+	public final fun component1 ()Ljava/util/UUID;
+	public final fun component10 ()Lcom/amazon/connect/touchpoint/core/InteractiveContent;
+	public final fun component11 ()Ljava/util/List;
+	public final fun component12 ()Z
+	public final fun component13 ()Lcom/amazon/connect/touchpoint/core/Attachment;
+	public final fun component2-YNDpY3k ()Ljava/lang/String;
+	public final fun component3 ()Lcom/amazon/connect/touchpoint/core/Direction;
+	public final fun component4 ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/Long;
+	public final fun component8 ()Ljava/time/Instant;
+	public final fun component9 ()Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttachment ()Lcom/amazon/connect/touchpoint/core/Attachment;
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getCitations ()Ljava/util/List;
+	public final fun getClientMessageId ()Ljava/util/UUID;
+	public final fun getCreatedAt ()Ljava/time/Instant;
+	public final fun getDeliveryState ()Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public final fun getDirection ()Lcom/amazon/connect/touchpoint/core/Direction;
+	public final fun getId ()Ljava/util/UUID;
+	public final fun getInteractive ()Lcom/amazon/connect/touchpoint/core/InteractiveContent;
+	public final fun getParticipantId ()Ljava/lang/String;
+	public final fun getParticipantRole ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public final fun getSequence ()Ljava/lang/Long;
+	public final fun getServerMessageId-YNDpY3k ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isStreaming ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/MessageId {
+	public static final synthetic fun box-impl (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/MessageId;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getRawValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/MessageKt {
+	public static final fun getModalities (Lcom/amazon/connect/touchpoint/core/InteractiveContent;)Ljava/util/List;
+	public static final fun getViewReference (Lcom/amazon/connect/touchpoint/core/InteractiveContent;)Lcom/amazon/connect/touchpoint/core/ViewReference;
+	public static final fun getViewSummary (Lcom/amazon/connect/touchpoint/core/InteractiveContent;)Lcom/amazon/connect/touchpoint/core/ViewSummary;
+}
+
+public final class com/amazon/connect/touchpoint/core/MessagePage {
+	public fun <init> (Ljava/util/List;Z)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Z
+	public final fun copy (Ljava/util/List;Z)Lcom/amazon/connect/touchpoint/core/MessagePage;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/MessagePage;Ljava/util/List;ZILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/MessagePage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHasMore ()Z
+	public final fun getMessages ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/Modality : java/lang/Enum {
+	public static final field CHAT Lcom/amazon/connect/touchpoint/core/Modality;
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/Modality$Companion;
+	public static final field VOICE Lcom/amazon/connect/touchpoint/core/Modality;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getRawValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/Modality;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/Modality;
+}
+
+public final class com/amazon/connect/touchpoint/core/Modality$Companion {
+	public final fun fromRawValue (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/Modality;
+}
+
+public final class com/amazon/connect/touchpoint/core/OutboundMessage {
+	public fun <init> (Ljava/util/UUID;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/util/UUID;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/UUID;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/UUID;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/OutboundMessage;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/OutboundMessage;Ljava/util/UUID;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/OutboundMessage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getChoiceId ()Ljava/lang/String;
+	public final fun getClientMessageId ()Ljava/util/UUID;
+	public final fun getInteractiveTemplate ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/Participant {
+	public fun <init> (Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/ParticipantRole;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/ParticipantRole;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/Participant;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/Participant;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/ParticipantRole;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/Participant;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getRole ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ParticipantRole : java/lang/Enum {
+	public static final field AGENT Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public static final field ASSISTANT Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public static final field CUSTOMER Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/ParticipantRole$Companion;
+	public static final field SUPERVISOR Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public static final field SYSTEM Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public static final field UNKNOWN Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getRawValue ()Ljava/lang/String;
+	public final fun isHuman ()Z
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+}
+
+public final class com/amazon/connect/touchpoint/core/ParticipantRole$Companion {
+	public final fun fromConnectRole (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public final fun fromRawValue (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+}
+
+public final class com/amazon/connect/touchpoint/core/ParticipantSet {
+	public fun <init> ()V
+	public final fun contains (Ljava/lang/String;)Z
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCount ()I
+	public final fun getHumanAgentPresent ()Z
+	public final fun getParticipants ()Ljava/util/List;
+	public fun hashCode ()I
+	public final fun join (Lcom/amazon/connect/touchpoint/core/Participant;)Lcom/amazon/connect/touchpoint/core/ParticipantSet;
+	public final fun leave (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/ParticipantSet;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/Permission : java/lang/Enum {
+	public static final field MICROPHONE Lcom/amazon/connect/touchpoint/core/Permission;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/Permission;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/Permission;
+}
+
+public final class com/amazon/connect/touchpoint/core/PermissionDenial {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/Permission;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/Permission;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/Permission;)Lcom/amazon/connect/touchpoint/core/PermissionDenial;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/PermissionDenial;Lcom/amazon/connect/touchpoint/core/Permission;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/PermissionDenial;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getConsequence ()Lcom/amazon/connect/touchpoint/core/PermissionDenial$Consequence;
+	public final fun getPermission ()Lcom/amazon/connect/touchpoint/core/Permission;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/PermissionDenial$Consequence : java/lang/Enum {
+	public static final field VOICE_UNAVAILABLE_CHAT_REMAINS Lcom/amazon/connect/touchpoint/core/PermissionDenial$Consequence;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/PermissionDenial$Consequence;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/PermissionDenial$Consequence;
+}
+
+public final class com/amazon/connect/touchpoint/core/PermissionPolicy {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/PermissionPolicy$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/util/Set;)V
+	public synthetic fun <init> (Ljava/util/Set;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun allows (Lcom/amazon/connect/touchpoint/core/Permission;)Z
+	public final fun component1 ()Ljava/util/Set;
+	public final fun copy (Ljava/util/Set;)Lcom/amazon/connect/touchpoint/core/PermissionPolicy;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/PermissionPolicy;Ljava/util/Set;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/PermissionPolicy;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMayRequest ()Ljava/util/Set;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/PermissionPolicy$Companion {
+	public final fun getNEVER ()Lcom/amazon/connect/touchpoint/core/PermissionPolicy;
+}
+
+public final class com/amazon/connect/touchpoint/core/PermissionStatus : java/lang/Enum {
+	public static final field DENIED Lcom/amazon/connect/touchpoint/core/PermissionStatus;
+	public static final field GRANTED Lcom/amazon/connect/touchpoint/core/PermissionStatus;
+	public static final field NOT_DETERMINED Lcom/amazon/connect/touchpoint/core/PermissionStatus;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/PermissionStatus;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/PermissionStatus;
+}
+
+public final class com/amazon/connect/touchpoint/core/ReceiptKind : java/lang/Enum {
+	public static final field DELIVERED Lcom/amazon/connect/touchpoint/core/ReceiptKind;
+	public static final field READ Lcom/amazon/connect/touchpoint/core/ReceiptKind;
+	public final fun getDeliveryState ()Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/ReceiptKind;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/ReceiptKind;
+}
+
+public final class com/amazon/connect/touchpoint/core/ReconnectionPolicy {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/ReconnectionPolicy$Companion;
+	public fun <init> ()V
+	public synthetic fun <init> (IJJJDILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (IJJJDLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2-UwyO8pc ()J
+	public final fun component3-UwyO8pc ()J
+	public final fun component4-UwyO8pc ()J
+	public final fun component5 ()D
+	public final fun copy-D9DMEZw (IJJJD)Lcom/amazon/connect/touchpoint/core/ReconnectionPolicy;
+	public static synthetic fun copy-D9DMEZw$default (Lcom/amazon/connect/touchpoint/core/ReconnectionPolicy;IJJJDILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ReconnectionPolicy;
+	public final fun delay-3nIYWDw (ID)J
+	public static synthetic fun delay-3nIYWDw$default (Lcom/amazon/connect/touchpoint/core/ReconnectionPolicy;IDILjava/lang/Object;)J
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInitialDelay-UwyO8pc ()J
+	public final fun getJitterFactor ()D
+	public final fun getMaxAttempts ()I
+	public final fun getMaxDelay-UwyO8pc ()J
+	public final fun getTotalBudget-UwyO8pc ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ReconnectionPolicy$Companion {
+	public final fun getDEFAULT ()Lcom/amazon/connect/touchpoint/core/ReconnectionPolicy;
+	public final fun getDISABLED ()Lcom/amazon/connect/touchpoint/core/ReconnectionPolicy;
+}
+
+public final class com/amazon/connect/touchpoint/core/ResolvedView {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Lcom/amazon/connect/touchpoint/core/ResolvedView;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ResolvedView;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ResolvedView;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActions ()Ljava/util/List;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getInputSchema ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getTemplate ()Ljava/lang/String;
+	public final fun getVersion ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/SecureStore {
+	public abstract fun delete (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun get (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun set (Ljava/lang/String;[BLcom/amazon/connect/touchpoint/core/SecureStoreAccessibility;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/SecureStoreAccessibility : java/lang/Enum {
+	public static final field WHEN_UNLOCKED_THIS_DEVICE_ONLY Lcom/amazon/connect/touchpoint/core/SecureStoreAccessibility;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/SecureStoreAccessibility;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/SecureStoreAccessibility;
+}
+
+public final class com/amazon/connect/touchpoint/core/StaticContactIdResolver : com/amazon/connect/touchpoint/core/TouchpointContactIdResolver {
+	public fun <init> (Ljava/lang/String;)V
+	public fun resolveContactId (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/StoredMessage {
+	public fun <init> (Ljava/util/UUID;Ljava/lang/String;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/Direction;Lcom/amazon/connect/touchpoint/core/ParticipantRole;Ljava/lang/String;Ljava/lang/Long;Ljava/time/Instant;Lcom/amazon/connect/touchpoint/core/DeliveryState;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;Ljava/lang/Long;)V
+	public synthetic fun <init> (Ljava/util/UUID;Ljava/lang/String;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/Direction;Lcom/amazon/connect/touchpoint/core/ParticipantRole;Ljava/lang/String;Ljava/lang/Long;Ljava/time/Instant;Lcom/amazon/connect/touchpoint/core/DeliveryState;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/UUID;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Z
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component14 ()Ljava/lang/String;
+	public final fun component15 ()Ljava/lang/Long;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Lcom/amazon/connect/touchpoint/core/Direction;
+	public final fun component5 ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/Long;
+	public final fun component8 ()Ljava/time/Instant;
+	public final fun component9 ()Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public final fun copy (Ljava/util/UUID;Ljava/lang/String;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/Direction;Lcom/amazon/connect/touchpoint/core/ParticipantRole;Ljava/lang/String;Ljava/lang/Long;Ljava/time/Instant;Lcom/amazon/connect/touchpoint/core/DeliveryState;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;Ljava/lang/Long;)Lcom/amazon/connect/touchpoint/core/StoredMessage;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/StoredMessage;Ljava/util/UUID;Ljava/lang/String;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/Direction;Lcom/amazon/connect/touchpoint/core/ParticipantRole;Ljava/lang/String;Ljava/lang/Long;Ljava/time/Instant;Lcom/amazon/connect/touchpoint/core/DeliveryState;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/StoredMessage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttachmentContentType ()Ljava/lang/String;
+	public final fun getAttachmentId ()Ljava/lang/String;
+	public final fun getAttachmentSize ()Ljava/lang/Long;
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getCitationsJson ()Ljava/lang/String;
+	public final fun getClientMessageId ()Ljava/util/UUID;
+	public final fun getCreatedAt ()Ljava/time/Instant;
+	public final fun getDeliveryState ()Lcom/amazon/connect/touchpoint/core/DeliveryState;
+	public final fun getDirection ()Lcom/amazon/connect/touchpoint/core/Direction;
+	public final fun getId ()Ljava/util/UUID;
+	public final fun getInteractiveJson ()Ljava/lang/String;
+	public final fun getParticipantId ()Ljava/lang/String;
+	public final fun getParticipantRole ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public final fun getSequence ()Ljava/lang/Long;
+	public final fun getServerMessageId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isStreaming ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/Touchpoint {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/Touchpoint;
+	public final fun getVERSION ()Ljava/lang/String;
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/TouchpointBackend {
+	public abstract fun liveSyncCredentials (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun startChatContact (Lcom/amazon/connect/touchpoint/core/ChatContactRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun startVoiceContact (Lcom/amazon/connect/touchpoint/core/VoiceContactRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/TouchpointContactIdResolver {
+	public abstract fun resolveContactId (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract class com/amazon/connect/touchpoint/core/TouchpointException : java/lang/Exception {
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointException$ActionHandlerFailed : com/amazon/connect/touchpoint/core/TouchpointException {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TouchpointException$ActionHandlerFailed;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointException$ActionHandlerFailed;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointException$ActionHandlerFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAction ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointException$ConsentNotGranted : com/amazon/connect/touchpoint/core/TouchpointException {
+	public fun <init> ()V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointException$ContactNotFound : com/amazon/connect/touchpoint/core/TouchpointException {
+	public fun <init> ()V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointException$CredentialVendingFailed : com/amazon/connect/touchpoint/core/TouchpointException {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TouchpointException$CredentialVendingFailed;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointException$CredentialVendingFailed;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointException$CredentialVendingFailed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getUnderlying ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointException$HttpFailure : com/amazon/connect/touchpoint/core/TouchpointException {
+	public fun <init> (ILjava/lang/String;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (ILjava/lang/String;)Lcom/amazon/connect/touchpoint/core/TouchpointException$HttpFailure;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointException$HttpFailure;ILjava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointException$HttpFailure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getResponseBody ()Ljava/lang/String;
+	public final fun getStatusCode ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointException$InvalidConfiguration : com/amazon/connect/touchpoint/core/TouchpointException {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TouchpointException$InvalidConfiguration;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointException$InvalidConfiguration;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointException$InvalidConfiguration;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDetail ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointException$MalformedPayload : com/amazon/connect/touchpoint/core/TouchpointException {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TouchpointException$MalformedPayload;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointException$MalformedPayload;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointException$MalformedPayload;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDetail ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointException$PermissionDenied : com/amazon/connect/touchpoint/core/TouchpointException {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/Permission;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/Permission;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/Permission;)Lcom/amazon/connect/touchpoint/core/TouchpointException$PermissionDenied;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointException$PermissionDenied;Lcom/amazon/connect/touchpoint/core/Permission;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointException$PermissionDenied;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPermission ()Lcom/amazon/connect/touchpoint/core/Permission;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointException$PersistenceFailure : com/amazon/connect/touchpoint/core/TouchpointException {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TouchpointException$PersistenceFailure;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointException$PersistenceFailure;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointException$PersistenceFailure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDetail ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointException$TransportFailure : com/amazon/connect/touchpoint/core/TouchpointException {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TouchpointException$TransportFailure;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointException$TransportFailure;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointException$TransportFailure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDetail ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointModality {
+	public fun <init> (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun copy (Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;)Lcom/amazon/connect/touchpoint/core/TouchpointModality;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointModality;Ljava/lang/String;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointModality;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Lkotlinx/serialization/json/JsonElement;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class com/amazon/connect/touchpoint/core/TouchpointSecurityEvent {
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointSecurityEvent$GuideInstanceRefused : com/amazon/connect/touchpoint/core/TouchpointSecurityEvent {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$GuideInstanceRefused;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointSecurityEvent$GuideNavigationBlocked : com/amazon/connect/touchpoint/core/TouchpointSecurityEvent {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$GuideNavigationBlocked;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncActionDeclined : com/amazon/connect/touchpoint/core/TouchpointSecurityEvent {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncActionDeclined;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncActionDeclined;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncActionDeclined;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAction ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncActionUnrouted : com/amazon/connect/touchpoint/core/TouchpointSecurityEvent {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncActionUnrouted;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncActionUnrouted;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncActionUnrouted;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAction ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncConsentChanged : com/amazon/connect/touchpoint/core/TouchpointSecurityEvent {
+	public fun <init> (Z)V
+	public final fun component1 ()Z
+	public final fun copy (Z)Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncConsentChanged;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncConsentChanged;ZILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncConsentChanged;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGranted ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncPayloadRejected : com/amazon/connect/touchpoint/core/TouchpointSecurityEvent {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncPayloadRejected;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncPayloadRejected;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$LiveSyncPayloadRejected;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAction ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointSecurityEvent$ScreenShareStarted : com/amazon/connect/touchpoint/core/TouchpointSecurityEvent {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$ScreenShareStarted;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointSecurityEvent$ScreenShareStopped : com/amazon/connect/touchpoint/core/TouchpointSecurityEvent {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$ScreenShareStopped;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointSecurityEvent$SignInRedirectRejected : com/amazon/connect/touchpoint/core/TouchpointSecurityEvent {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent$SignInRedirectRejected;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointSecurityEvents {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvents;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/SharedFlow;
+	public final fun report (Lcom/amazon/connect/touchpoint/core/TouchpointSecurityEvent;)V
+}
+
+public final class com/amazon/connect/touchpoint/core/TouchpointSession : java/lang/AutoCloseable {
+	public synthetic fun <init> (Lcom/amazon/connect/touchpoint/core/CredentialBroker;Lcom/amazon/connect/touchpoint/core/ConversationStore;Ljava/util/Map;Lcom/amazon/connect/touchpoint/core/ReconnectionPolicy;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lcom/amazon/connect/touchpoint/core/CredentialBroker;Lcom/amazon/connect/touchpoint/core/ConversationStore;Ljava/util/Map;Lcom/amazon/connect/touchpoint/core/ReconnectionPolicy;JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun attachmentUrl (Lcom/amazon/connect/touchpoint/core/Attachment;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun beginAuthentication (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun cancelAuthentication (ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun cancelAuthentication$default (Lcom/amazon/connect/touchpoint/core/TouchpointSession;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public fun close ()V
+	public final fun completeAuthentication (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteAllConversations (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun deleteConversation (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun describeView (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun earlierTranscript (Lcom/amazon/connect/touchpoint/core/Message;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun earlierTranscript$default (Lcom/amazon/connect/touchpoint/core/TouchpointSession;Lcom/amazon/connect/touchpoint/core/Message;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun end (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getAuthenticationCard ()Lcom/amazon/connect/touchpoint/core/AuthenticationCard;
+	public final fun getContactId ()Ljava/lang/String;
+	public final fun getDispatchChangeReason ()Lcom/amazon/connect/touchpoint/core/DispatchChangeReason;
+	public final fun getDispatchState ()Lcom/amazon/connect/touchpoint/core/DispatchState;
+	public final fun getEvents ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getModality ()Lcom/amazon/connect/touchpoint/core/Modality;
+	public final fun getOnIncomingMessages ()Lkotlin/jvm/functions/Function1;
+	public final fun getState ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun isActive ()Z
+	public final fun isLiveSyncRegistered ()Z
+	public final fun markMessagesRead (Ljava/util/UUID;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun participantNames (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun participants (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun pruneExpiredConversations (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun register (Lcom/amazon/connect/touchpoint/core/LiveSyncControl;)V
+	public final fun reportSecurityRejection (Lcom/amazon/connect/touchpoint/core/TouchpointException;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun resend (Lcom/amazon/connect/touchpoint/core/Message;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun resume (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun send (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun sendAttachment (Lcom/amazon/connect/touchpoint/core/AttachmentUpload;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun sendChoice (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun sendChoice$default (Lcom/amazon/connect/touchpoint/core/TouchpointSession;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun sendSlot (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun sendTyping (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun serverTranscript (ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun serverTranscript$default (Lcom/amazon/connect/touchpoint/core/TouchpointSession;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun setOnIncomingMessages (Lkotlin/jvm/functions/Function1;)V
+	public final fun startChat (Lcom/amazon/connect/touchpoint/core/ChatContactRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun startVoice (Lcom/amazon/connect/touchpoint/core/VoiceContactRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun submitView (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun submitView$default (Lcom/amazon/connect/touchpoint/core/TouchpointSession;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun transcript (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun transcript (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/amazon/connect/touchpoint/core/TranscriptEntry {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/ParticipantRole;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/ParticipantRole;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TranscriptEntry;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TranscriptEntry;Ljava/lang/String;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/ParticipantRole;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TranscriptEntry;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAbsoluteTime ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getRole ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TranscriptNotice {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/TranscriptNotice$Kind;Ljava/util/UUID;Ljava/time/Instant;Ljava/util/UUID;)V
+	public synthetic fun <init> (Lcom/amazon/connect/touchpoint/core/TranscriptNotice$Kind;Ljava/util/UUID;Ljava/time/Instant;Ljava/util/UUID;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/TranscriptNotice$Kind;
+	public final fun component2 ()Ljava/util/UUID;
+	public final fun component3 ()Ljava/time/Instant;
+	public final fun component4 ()Ljava/util/UUID;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/TranscriptNotice$Kind;Ljava/util/UUID;Ljava/time/Instant;Ljava/util/UUID;)Lcom/amazon/connect/touchpoint/core/TranscriptNotice;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TranscriptNotice;Lcom/amazon/connect/touchpoint/core/TranscriptNotice$Kind;Ljava/util/UUID;Ljava/time/Instant;Ljava/util/UUID;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TranscriptNotice;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAfterMessageId ()Ljava/util/UUID;
+	public final fun getAt ()Ljava/time/Instant;
+	public final fun getId ()Ljava/util/UUID;
+	public final fun getKind ()Lcom/amazon/connect/touchpoint/core/TranscriptNotice$Kind;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TranscriptNotice$Kind : java/lang/Enum {
+	public static final field AGENT_JOINED Lcom/amazon/connect/touchpoint/core/TranscriptNotice$Kind;
+	public static final field AGENT_LEFT Lcom/amazon/connect/touchpoint/core/TranscriptNotice$Kind;
+	public static final field CONNECTION_LOST Lcom/amazon/connect/touchpoint/core/TranscriptNotice$Kind;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TranscriptNotice$Kind;
+	public static fun values ()[Lcom/amazon/connect/touchpoint/core/TranscriptNotice$Kind;
+}
+
+public final class com/amazon/connect/touchpoint/core/TranscriptPage {
+	public static final field Companion Lcom/amazon/connect/touchpoint/core/TranscriptPage$Companion;
+	public fun <init> (Ljava/util/List;Ljava/util/List;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;Ljava/util/List;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TranscriptPage;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TranscriptPage;Ljava/util/List;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TranscriptPage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessages ()Ljava/util/List;
+	public final fun getNextToken ()Ljava/lang/String;
+	public final fun getParticipantEvents ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TranscriptPage$Companion {
+	public final fun getEMPTY ()Lcom/amazon/connect/touchpoint/core/TranscriptPage;
+}
+
+public final class com/amazon/connect/touchpoint/core/TranscriptSlice {
+	public fun <init> (Ljava/util/List;Z)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Z
+	public final fun copy (Ljava/util/List;Z)Lcom/amazon/connect/touchpoint/core/TranscriptSlice;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TranscriptSlice;Ljava/util/List;ZILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TranscriptSlice;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHasMore ()Z
+	public final fun getMessages ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/amazon/connect/touchpoint/core/TransportEvent {
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$AuthenticationChanged : com/amazon/connect/touchpoint/core/TransportEvent {
+	public fun <init> (Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;)V
+	public final fun component1 ()Ljava/util/UUID;
+	public final fun component2 ()Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+	public final fun copy (Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;)Lcom/amazon/connect/touchpoint/core/TransportEvent$AuthenticationChanged;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TransportEvent$AuthenticationChanged;Ljava/util/UUID;Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TransportEvent$AuthenticationChanged;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId ()Ljava/util/UUID;
+	public final fun getStatus ()Lcom/amazon/connect/touchpoint/core/AuthenticationStatus;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$Connected : com/amazon/connect/touchpoint/core/TransportEvent {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/TransportEvent$Connected;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$ContactEnded : com/amazon/connect/touchpoint/core/TransportEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/EndReason;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/EndReason;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/EndReason;)Lcom/amazon/connect/touchpoint/core/TransportEvent$ContactEnded;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TransportEvent$ContactEnded;Lcom/amazon/connect/touchpoint/core/EndReason;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TransportEvent$ContactEnded;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReason ()Lcom/amazon/connect/touchpoint/core/EndReason;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$Disconnected : com/amazon/connect/touchpoint/core/TransportEvent {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TransportEvent$Disconnected;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TransportEvent$Disconnected;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TransportEvent$Disconnected;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$InterimMessage : com/amazon/connect/touchpoint/core/TransportEvent {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TransportEvent$InterimMessage;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TransportEvent$InterimMessage;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TransportEvent$InterimMessage;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$MessageDelivered : com/amazon/connect/touchpoint/core/TransportEvent {
+	public fun <init> (Ljava/util/UUID;Ljava/lang/String;Ljava/lang/Long;)V
+	public final fun component1 ()Ljava/util/UUID;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Long;
+	public final fun copy (Ljava/util/UUID;Ljava/lang/String;Ljava/lang/Long;)Lcom/amazon/connect/touchpoint/core/TransportEvent$MessageDelivered;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TransportEvent$MessageDelivered;Ljava/util/UUID;Ljava/lang/String;Ljava/lang/Long;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TransportEvent$MessageDelivered;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getClientMessageId ()Ljava/util/UUID;
+	public final fun getSequence ()Ljava/lang/Long;
+	public final fun getServerMessageId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$MessageReceived : com/amazon/connect/touchpoint/core/TransportEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/StoredMessage;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/StoredMessage;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/StoredMessage;)Lcom/amazon/connect/touchpoint/core/TransportEvent$MessageReceived;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TransportEvent$MessageReceived;Lcom/amazon/connect/touchpoint/core/StoredMessage;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TransportEvent$MessageReceived;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMessage ()Lcom/amazon/connect/touchpoint/core/StoredMessage;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$ParticipantJoined : com/amazon/connect/touchpoint/core/TransportEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/Participant;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/Participant;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/Participant;)Lcom/amazon/connect/touchpoint/core/TransportEvent$ParticipantJoined;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TransportEvent$ParticipantJoined;Lcom/amazon/connect/touchpoint/core/Participant;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TransportEvent$ParticipantJoined;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getParticipant ()Lcom/amazon/connect/touchpoint/core/Participant;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$ParticipantLeft : com/amazon/connect/touchpoint/core/TransportEvent {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/TransportEvent$ParticipantLeft;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TransportEvent$ParticipantLeft;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TransportEvent$ParticipantLeft;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$Receipt : com/amazon/connect/touchpoint/core/TransportEvent {
+	public fun <init> (Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/ReceiptKind;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lcom/amazon/connect/touchpoint/core/ReceiptKind;
+	public final fun copy (Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/ReceiptKind;)Lcom/amazon/connect/touchpoint/core/TransportEvent$Receipt;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TransportEvent$Receipt;Ljava/lang/String;Lcom/amazon/connect/touchpoint/core/ReceiptKind;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TransportEvent$Receipt;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getKind ()Lcom/amazon/connect/touchpoint/core/ReceiptKind;
+	public final fun getServerMessageId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$Reestablished : com/amazon/connect/touchpoint/core/TransportEvent {
+	public static final field INSTANCE Lcom/amazon/connect/touchpoint/core/TransportEvent$Reestablished;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$SecurityRejection : com/amazon/connect/touchpoint/core/TransportEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/TouchpointException;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/TouchpointException;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/TouchpointException;)Lcom/amazon/connect/touchpoint/core/TransportEvent$SecurityRejection;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TransportEvent$SecurityRejection;Lcom/amazon/connect/touchpoint/core/TouchpointException;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TransportEvent$SecurityRejection;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Lcom/amazon/connect/touchpoint/core/TouchpointException;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/TransportEvent$Typing : com/amazon/connect/touchpoint/core/TransportEvent {
+	public fun <init> (Lcom/amazon/connect/touchpoint/core/ParticipantRole;)V
+	public final fun component1 ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public final fun copy (Lcom/amazon/connect/touchpoint/core/ParticipantRole;)Lcom/amazon/connect/touchpoint/core/TransportEvent$Typing;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/TransportEvent$Typing;Lcom/amazon/connect/touchpoint/core/ParticipantRole;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/TransportEvent$Typing;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getRole ()Lcom/amazon/connect/touchpoint/core/ParticipantRole;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ViewReference {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/ViewReference;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ViewReference;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ViewReference;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInputData ()Ljava/lang/String;
+	public final fun getViewToken ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/ViewSummary {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/amazon/connect/touchpoint/core/ViewSummary;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/ViewSummary;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/ViewSummary;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHeading ()Ljava/lang/String;
+	public final fun getSubheading ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/VoiceContactCredentials : com/amazon/connect/touchpoint/core/ExpiringCredentials {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/time/Instant;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;)Lcom/amazon/connect/touchpoint/core/VoiceContactCredentials;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/VoiceContactCredentials;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/time/Instant;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/VoiceContactCredentials;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttendeeJson ()Ljava/lang/String;
+	public final fun getContactId ()Ljava/lang/String;
+	public fun getExpiresAt ()Ljava/time/Instant;
+	public final fun getMeetingJson ()Ljava/lang/String;
+	public final fun getParticipantId ()Ljava/lang/String;
+	public final fun getParticipantToken ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/amazon/connect/touchpoint/core/VoiceContactRequest {
+	public fun <init> (Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Z
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Lcom/amazon/connect/touchpoint/core/VoiceContactRequest;
+	public static synthetic fun copy$default (Lcom/amazon/connect/touchpoint/core/VoiceContactRequest;Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;ILjava/lang/Object;)Lcom/amazon/connect/touchpoint/core/VoiceContactRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/Map;
+	public final fun getClientToken ()Ljava/lang/String;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getScreenShare ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

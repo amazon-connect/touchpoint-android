@@ -1,0 +1,21 @@
+Amazon Connect Touchpoint SDK for Android
+Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+
+This product includes software developed at Amazon.com, Inc.
+
+--------------------------------------------------------------------------------
+Third-party notices
+--------------------------------------------------------------------------------
+
+* No source from the NLX Android SDK (MIT) is included. Were any taken, its MIT copyright and
+  permission notice would be reproduced here, attributed to the files it came from.
+
+* Amazon Connect Chat SDK for Android (Apache-2.0) and Amazon Chime SDK for Android (Apache-2.0)
+  are consumed as Maven dependencies, not vendored. Their notices travel with their own artifacts.
+
+* The Gradle wrapper (gradlew, gradlew.bat and gradle/wrapper/) is Gradle's, under the Apache
+  License 2.0, as its headers say.
+
+The chat UI's icons are ported from Amazon Connect Touchpoint for the web
+(https://github.com/amazon-connect/touchpoint), Copyright Amazon.com, Inc. or its
+affiliates, licensed under the MIT License.
