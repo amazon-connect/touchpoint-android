@@ -1,12 +1,12 @@
-# Amazon Connect Touchpoint SDK for Android
+# Amazon Connect Customer Touchpoint SDK for Android
 
 **Status: developer preview.** The public API may change before 1.0; each release's changes are in
 [CHANGELOG.md](CHANGELOG.md).
 
-Native Android SDK for Amazon Connect Touchpoint: chat, outbound voice, and Live Sync, as separately
-linkable Gradle modules so an app pays only for the modalities it uses. It is the counterpart of the
-Touchpoint iOS SDK and follows the same design, and it matches Touchpoint for the web's behaviour
-and options.
+Native Android SDK for Amazon Connect Customer Touchpoint: chat, outbound voice, and Live Sync, as
+separately linkable Gradle modules so an app pays only for the modalities it uses. It is the
+counterpart of the Touchpoint iOS SDK and follows the same design, and it matches Touchpoint for
+the web's behaviour and options.
 
 | Module | What it adds | Links |
 | --- | --- | --- |
@@ -86,7 +86,7 @@ and the folder.
 ## Developer guide
 
 The SDK is a client. The contact centre it talks to is yours: an Amazon Connect instance, its
-contact flows and, for the assistant, an Agentic CX application that a flow connects to. Most
+contact flows and, for the assistant, an Agentic CX Designer application that a flow connects to. Most
 integration problems come from that side, so each feature below ends with what it needs there.
 
 ### How the pieces fit
@@ -257,7 +257,7 @@ fun SupportButton(session: TouchpointSession) {
 ### 3. The assistant: choices, cards and custom modalities
 
 Build the assistant in Agentic CX Designer and hand the contact to it with the contact flow's
-**Agentic CX** block (`ConnectParticipantWithAgenticCX` in flow JSON). The SDK renders what the
+**Agentic CX** flow block (`ConnectParticipantWithAgenticCX` in flow JSON). The SDK renders what the
 assistant sends without any code from you:
 - choices, as suggested replies;
 - the default modalities: `DefaultCard`, `DefaultCarousel`, `DefaultDateInput` and `DefaultVideo`;
@@ -281,12 +281,12 @@ TouchpointChatSheet(session, visible, onDismiss, modalities = modalities)
 - The actions are `null` once the message is no longer the newest one.
 - If your modality's name clashes with a default modality, the default wins.
 
-**Agentic CX setup**
+**Agentic CX Designer setup**
 
 - The block names a workspace, an application and an **alias**. If you set them by id (in flow
   JSON, `AgentConfiguration.WorkspaceId`, `ApplicationId` and `Alias`), `Alias` is the
   deployment's alias, not the environment name.
-- Check that the Agentic CX block is available in your instance's Region.
+- Check that Agentic CX Designer and its flow block are available in your instance's Region.
 - Context variables set in the block reach the application. Define them in the application
   first. A block takes up to 10. Pass what the assistant should know, such as the current screen.
 - Contacts talk to the deployed build, so build and deploy the application after every change.
@@ -444,7 +444,7 @@ the chat's place rather than sitting inside it.
 
 - The backend calls `StartWebRTCContact` with a voice contact flow. The instance's Region must
   offer in-app WebRTC calling, and Agentic CX Designer too if the assistant answers.
-- To have the assistant answer, use the same Agentic CX block as chat. Its speech recognition
+- To have the assistant answer, use the same Agentic CX flow block as chat. Its speech recognition
   engine defaults to Amazon Connect agentic voice.
 - For a human agent to take the call, the queue's routing profile must take voice as well as
   chat.
@@ -550,9 +550,9 @@ How it behaves:
 - **One client per contact.** If your composition outlives contacts, build the aggregator with
   `TouchpointActionAggregator(post = …)`, and call `readvertise()` after switching clients.
 
-**Agentic CX setup**
+**Agentic CX Designer setup**
 
-- The contact flow's Agentic CX block must point at the application that has the **Live Sync
+- The contact flow's Agentic CX flow block must point at the application that has the **Live Sync
   node**. Live Sync then follows the same contact.
 - In that node, declare each action your app advertises as a custom action. Give it the same name
   and schema, and scope tags that match your `TouchpointScope` names. The assistant doesn't
@@ -582,13 +582,13 @@ How it behaves:
 | Feature | Amazon Connect | Agentic CX Designer | Your backend | Your app |
 | --- | --- | --- | --- | --- |
 | Chat | Chat-enabled instance, inbound chat flow, queue, routing profile, agents | — | `StartChatContact` with the interactive content types | `ConnectChatTransport` |
-| Assistant | Flow with the Agentic CX block | Deployed application and its alias | — | `modalities` for custom modalities |
+| Assistant | Flow with the Agentic CX flow block | Deployed application and its alias | — | `modalities` for custom modalities |
 | Sign-in | Cognito pool associated with the instance; Authenticate Customer block with Customer Profiles config | — | `UpdateParticipantAuthentication` | `ChatAuthentication`; a redirect intent filter or App Link |
 | Guides | Show view block | — | — | `connectInstanceUrl` |
 | Attachments | Attachments storage (S3) | — | — | — |
 | Voice | Voice contact flow; routing profile that takes voice; Region with WebRTC calling | — | `StartWebRTCContact`, `ClientToken` | `RECORD_AUDIO`, `MODIFY_AUDIO_SETTINGS`; `touchpoint-voice-telecom` for the background |
 | Screen share | Agent security profile with Video calls – Access | — | `AllowedCapabilities.Customer.ScreenShare = SEND` | `TouchpointVoiceCall(…, allowsScreenShare = true)`; redaction |
-| Live Sync | Flow whose Agentic CX block uses the Live Sync application | Live Sync node declaring the actions and scope tags; deployed build | Vends the deployment key and API key | `TouchpointAction`, consent, bind on contact, lifecycle |
+| Live Sync | Flow whose Agentic CX flow block uses the Live Sync application | Live Sync node declaring the actions and scope tags; deployed build | Vends the deployment key and API key | `TouchpointAction`, consent, bind on contact, lifecycle |
 
 ## Developing
 

@@ -502,19 +502,19 @@ class ChatSurfaceTest {
 
     @Test
     fun theHostsWordsAskBeforeEndingAndTheVeilKeepsTheChatUnderItStill() {
-        val words = TouchpointChatCopy(TouchpointChatCopy.EndConversationConfirm(title = "Leave?", body = "Save your transcript first.", confirm = "Yes, end conversation", cancel = "No, continue conversation"))
+        val words = TouchpointChatCopy(TouchpointChatCopy.EndConversationConfirm(title = "Leave?", body = "Save your transcript first.", confirm = "End it", cancel = "Keep chatting"))
         show(connected, options = TouchpointChatOptions(addedElements = setOf(TouchpointAddedElement.HEADER_CLOSE), copy = words))
         rule.onNode(label("Close")).performClick()
         rule.onNodeWithText("Leave?").assertIsDisplayed()
         rule.onNodeWithText("Save your transcript first.").assertIsDisplayed()
         // Over the panel, as web's: what is under it is out of TalkBack's reach meanwhile.
         assertEquals(0, rule.onAllNodesWithContentDescription("Type something").fetchSemanticsNodes().size)
-        rule.onNodeWithText("No, continue conversation").performClick()
+        rule.onNodeWithText("Keep chatting").performClick()
         rule.waitForIdle()
         assertEquals(0, ends)
         rule.onNodeWithContentDescription("Type something").assertIsDisplayed()
         rule.onNode(label("Close")).performClick()
-        rule.onNodeWithText("Yes, end conversation").performClick()
+        rule.onNodeWithText("End it").performClick()
         rule.waitForIdle()
         assertEquals(1, ends)
     }

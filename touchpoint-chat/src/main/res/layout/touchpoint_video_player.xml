@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The video modality's player. A TextureView, not PlayerView's default SurfaceView: a SurfaceView
+     draws in its own window layer, so in a scrolling transcript it isn't clipped or ordered with the
+     Compose content around it and can cover the composer. PlayerView takes its surface type from
+     XML only. -->
+<androidx.media3.ui.PlayerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:surface_type="texture_view" />

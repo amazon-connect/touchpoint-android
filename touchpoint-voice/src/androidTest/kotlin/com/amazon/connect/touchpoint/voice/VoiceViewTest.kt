@@ -200,11 +200,11 @@ class VoiceViewTest {
     fun aCallMadeWithItsNameBuildsItsOwnRequestAndOffersTheShareItAllows() {
         // The call made with its name: the name and the share in one place, both of the share's switches set.
         transport.allowsScreenShare = false
-        val call = TouchpointVoiceCall(session, transport, displayName = "TD", allowsScreenShare = true, attributes = mapOf("screen" to "accounts"))
+        val call = TouchpointVoiceCall(session, transport, displayName = "Acme Bank", allowsScreenShare = true, attributes = mapOf("screen" to "accounts"))
         rule.runOnUiThread { call.start() }
         rule.waitUntil(WAIT_MS) { call.phase.value == TouchpointVoiceCall.Phase.CONNECTED }
         val request = requests.single()
-        assertEquals("TD", request.displayName)
+        assertEquals("Acme Bank", request.displayName)
         assertTrue(request.screenShare)
         assertEquals(mapOf("screen" to "accounts"), request.attributes)
         assertTrue(transport.allowsScreenShare)

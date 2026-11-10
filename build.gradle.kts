@@ -90,13 +90,13 @@ subprojects {
 // is kept. No credential is ever read here.
 val published =
     mapOf(
-        "touchpoint-core" to "Amazon Connect Touchpoint for Android: configuration, credential brokering, sessions, the durable store and events. Pure Kotlin.",
-        "touchpoint-core-android" to "Amazon Connect Touchpoint for Android: the Keystore-backed secure store, SQLite and shared resources.",
-        "touchpoint-ui" to "Amazon Connect Touchpoint for Android: the theme, sizes, icons, words and controls chat and voice share.",
-        "touchpoint-chat" to "Amazon Connect Touchpoint for Android: chat with an Amazon Connect contact, its transcript UI, and new-message reporting for the host.",
-        "touchpoint-voice" to "Amazon Connect Touchpoint for Android: in-app calls over WebRTC, and screen sharing.",
-        "touchpoint-voice-telecom" to "Amazon Connect Touchpoint for Android: in-app calls that go on in the background, through Jetpack core-telecom.",
-        "touchpoint-livesync" to "Amazon Connect Touchpoint for Android: Live Sync, its consent, and Compose declarations of what each screen can do.",
+        "touchpoint-core" to "Amazon Connect Customer Touchpoint for Android: configuration, credential brokering, sessions, the durable store and events. Pure Kotlin.",
+        "touchpoint-core-android" to "Amazon Connect Customer Touchpoint for Android: the Keystore-backed secure store, SQLite and shared resources.",
+        "touchpoint-ui" to "Amazon Connect Customer Touchpoint for Android: the theme, sizes, icons, words and controls chat and voice share.",
+        "touchpoint-chat" to "Amazon Connect Customer Touchpoint for Android: chat with an Amazon Connect contact, its transcript UI, and new-message reporting for the host.",
+        "touchpoint-voice" to "Amazon Connect Customer Touchpoint for Android: in-app calls over WebRTC, and screen sharing.",
+        "touchpoint-voice-telecom" to "Amazon Connect Customer Touchpoint for Android: in-app calls that go on in the background, through Jetpack core-telecom.",
+        "touchpoint-livesync" to "Amazon Connect Customer Touchpoint for Android: Live Sync, its consent, and Compose declarations of what each screen can do.",
     )
 // Never published: touchpoint-development, a development backend.
 subprojects {

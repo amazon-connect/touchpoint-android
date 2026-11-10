@@ -34,3 +34,6 @@ captures/
 
 ## Logs and scratch
 *.log
+
+## The demo's live-mode settings: one deployment's endpoint and Cognito ids (no secrets)
+demo/acme-bank/live.properties

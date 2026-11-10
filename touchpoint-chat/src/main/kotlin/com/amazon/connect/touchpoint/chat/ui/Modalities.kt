@@ -355,7 +355,13 @@ private fun InlinePlayer(
         }
     }
     androidx.compose.ui.viewinterop.AndroidView(
-        factory = { androidx.media3.ui.PlayerView(it).apply { this.player = player; useController = true } },
+        // Inflated for its TextureView (the layout says why).
+        factory = {
+            val inflated = android.view.LayoutInflater.from(it).inflate(com.amazon.connect.touchpoint.chat.R.layout.touchpoint_video_player, null)
+            // The layout's root is always a PlayerView; the fallback only keeps a broken resource from crashing.
+            ((inflated as? androidx.media3.ui.PlayerView) ?: androidx.media3.ui.PlayerView(it))
+                .apply { this.player = player; useController = true }
+        },
         modifier = modifier,
         onRelease = { it.player = null },
     )

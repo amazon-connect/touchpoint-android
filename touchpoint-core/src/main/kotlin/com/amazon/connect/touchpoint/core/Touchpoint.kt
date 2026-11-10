@@ -1,6 +1,6 @@
 package com.amazon.connect.touchpoint.core
 
-/** Package-wide constants for the Amazon Connect Touchpoint Android SDK. */
+/** Package-wide constants for the Amazon Connect Customer Touchpoint SDK for Android. */
 public object Touchpoint {
     /**
      * Semantic version of the SDK. Pre-1.0 is explicitly unstable. Not `const`: a

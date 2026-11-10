@@ -225,8 +225,8 @@ public data class TranscriptPage(
 }
 
 /**
- * A modality transport. Production implementations wrap the Connect chat SDK and Chime
- * (Phase 4); Core proves the coordinator against stubs.
+ * A modality transport. Production implementations wrap the Connect chat SDK and Chime; Core
+ * proves the coordinator against stubs.
  *
  * **Ordering contract.** The coordinator starts collecting [events] *before* calling [connect], but
  * a flow's collection can begin after that call returns, so a transport must buffer events until its
