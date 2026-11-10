@@ -16,12 +16,16 @@ on:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
       - "v[0-9]+.[0-9]+.[0-9]+-*"
-  # For a tag that already exists, such as one pushed before this workflow did.
+  # By hand: a dry run of main before tagging, or a release of a tag that already exists.
   workflow_dispatch:
     inputs:
+      dry-run:
+        description: "Dry run of main: build, assume the role, read the secrets, sign, check the token. Uploads nothing, tags nothing."
+        type: boolean
+        default: true
       tag:
-        description: The release tag, v<version>
-        required: true
+        description: "Not a dry run: the existing release tag, v<version>"
+        required: false
 
 permissions:
   contents: read
@@ -34,8 +38,70 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # The whole signing path, before a tag that can't be undone exists: main's commit, its version,
+  # the release role, every secret, the signatures and the portal token. Nothing leaves the runner.
+  dry-run:
+    name: Dry run of main
+    if: github.event_name == 'workflow_dispatch' && inputs.dry-run
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    environment: release
+    permissions:
+      contents: read
+      id-token: write # assume the release role through OIDC
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: The version is releasable, and its notes
+        run: |
+          version=$(sed -n 's/^version=\(.*\)$/\1/p' gradle.properties)
+          sh Scripts/check-release-tag.sh "v$version"
+          echo "The GitHub release's notes would be:"
+          sh Scripts/check-release-tag.sh --notes "v$version"
+
+      - uses: actions/setup-java@77dd5b2ce225ea11469928ac317850245a74ae78 # v6.2.0
+        with:
+          distribution: corretto
+          java-version: "17"
+
+      - name: Android SDK
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platforms;android-36" "build-tools;36.1.0" > /dev/null
+
+      - uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
+        with:
+          cache-disabled: true
+
+      - name: Build the bundle
+        id: bundle
+        run: |
+          version=$(sed -n 's/^version=\(.*\)$/\1/p' gradle.properties)
+          bundle="build/release/touchpoint-android-$version.zip"
+          mkdir -p build/release
+          sh Scripts/release-bundle.sh "$bundle" | tee build/release-bundle.log
+          sha256=$(sed -n 's/^release-bundle: sha256 \([0-9a-f]*\)$/\1/p' build/release-bundle.log)
+          [ -n "$sha256" ] || { echo "release: release-bundle.sh printed no sha256"; exit 1; }
+          { echo "path=$bundle"; echo "sha256=$sha256"; } >> "$GITHUB_OUTPUT"
+
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: ${{ vars.RELEASE_ROLE_ARN }}
+          role-session-name: touchpoint-android-release-dry-run
+          aws-region: us-east-1
+
+      - name: Sign, verify, check the token; upload nothing
+        env:
+          BUNDLE: ${{ steps.bundle.outputs.path }}
+          SHA256: ${{ steps.bundle.outputs.sha256 }}
+        run: sh Scripts/sign-and-upload.sh --sha256 "$SHA256" --dry-run "$BUNDLE"
+
   verify:
     name: Verify the tag
+    if: github.event_name == 'push' || !inputs.dry-run
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
@@ -53,6 +119,7 @@ jobs:
       - name: The tag's commit
         id: commit
         run: |
+          [ -n "$TAG" ] || { echo "release: name the tag to release, or run a dry run"; exit 1; }
           sha=$(git rev-parse "refs/tags/$TAG^{commit}")
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
           echo "release: $TAG is $sha"

@@ -5,7 +5,11 @@
 # pipeline later. Every secret is read from Secrets Manager into a private temporary directory, and
 # that directory is deleted on exit; none is printed, and none is passed on a command line.
 #
-#   Scripts/sign-and-upload.sh --sha256 <the bundle's sha256, as release-bundle.sh printed it> [--confirm <version>] <bundle.zip>
+#   Scripts/sign-and-upload.sh --sha256 <the bundle's sha256, as release-bundle.sh printed it> [--confirm <version> | --dry-run] <bundle.zip>
+#
+# --dry-run does everything but upload: it reads every secret, signs and verifies every file, and
+# checks the portal token by asking the portal whether this version is already published. It proves
+# the whole path before a release tag, which can't be undone, exists.
 #
 # Without --confirm it asks for the version to be typed before it uploads. The release workflow passes
 # the version its tag names instead, having checked the tag against the tree: the same confirmation,
@@ -25,7 +29,9 @@ usage="usage: Scripts/sign-and-upload.sh --sha256 <sha256> [--confirm <version>]
 want=${2:?$usage}
 shift 2
 confirm=""
+dry_run=no
 if [ "${1:-}" = --confirm ]; then confirm=${2:?$usage}; shift 2; fi
+if [ "${1:-}" = --dry-run ]; then dry_run=yes; shift; fi
 bundle=${1:?$usage}
 portal=https://central.sonatype.com/api/v1/publisher
 
@@ -91,7 +97,10 @@ for p in $poms; do
     group=$(dirname "$(dirname "$(dirname "$p")")" | tr / .)
     echo "  $group:$artifact:$version"
 done
-if [ -n "$confirm" ]; then
+if [ "$dry_run" = yes ]; then
+    answer=$version
+    echo "sign-and-upload: dry run: nothing will be uploaded"
+elif [ -n "$confirm" ]; then
     answer=$confirm
     echo "sign-and-upload: confirmed for $confirm"
 else
@@ -108,6 +117,22 @@ user=$(trim "$(secret "${TP_SECRET_PORTAL_USERNAME:-touchpoint-android/release/p
 pass=$(trim "$(secret "${TP_SECRET_PORTAL_PASSWORD:-touchpoint-android/release/portal-password}")")
 printf 'header = "Authorization: Bearer %s"\n' "$(printf '%s:%s' "$user" "$pass" | base64 | tr -d '\n')" >"$work/curl.cfg"
 unset user pass t
+
+if [ "$dry_run" = yes ]; then
+    # The token and the version, without uploading: the portal answers this only to a valid token.
+    group=$(dirname "$(dirname "$(dirname "$(printf '%s\n' $poms | head -1)")")" | tr / .)
+    artifact=$(basename "$(dirname "$(dirname "$(printf '%s\n' $poms | head -1)")")")
+    published=$(curl -sS --fail-with-body --config "$work/curl.cfg" \
+        "$portal/published?namespace=$group&name=$artifact&version=$version") \
+        || fail "the portal refused the token: $published"
+    answer=$(printf '%s' "$published" | python3 -I -c 'import json, sys; print(json.load(sys.stdin).get("published"))' 2>/dev/null || true)
+    case "$answer" in
+        True) fail "$group:$artifact:$version is already published: a release needs a new version" ;;
+        False) echo "sign-and-upload: dry run passed: the token works, and $group:$artifact:$version isn't published yet" ;;
+        *) fail "the portal's answer was unexpected: $published" ;;
+    esac
+    exit 0
+fi
 
 name="touchpoint-android-$version"
 id=$(curl -sS --fail-with-body --config "$work/curl.cfg" -F "bundle=@$signed" \
