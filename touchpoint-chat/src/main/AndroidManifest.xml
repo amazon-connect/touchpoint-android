@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A library manifest merges into the host application's manifest, so this one declares nothing.
+     Scripts/check-manifests.sh enforces that.
+
+     The one entry is a removal, not a declaration. Media3's ExoPlayer declares WAKE_LOCK for its wake
+     mode, which a video message never sets: without this, every host linking chat would be made to
+     declare a permission it never uses. A library manifest outranks its own dependencies' at the
+     host's merge, which is what lets this strip Media3's entry; a host's own declaration stays. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission
+        android:name="android.permission.WAKE_LOCK"
+        tools:node="remove" />
+</manifest>

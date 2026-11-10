@@ -1,0 +1,7 @@
+------------------------------------------------------------
+Project ':touchpoint-chat'
+------------------------------------------------------------
+
+releaseRuntimeClasspath - Runtime classpath of '/release'.
++--- project ':touchpoint-core-android'
+\--- software.aws.connect:amazon-connect-chat-android:2.0.99 FAILED

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Touchpoint web 1.0.4's own translations (src/utils/useCopy.ts), string for string. What web
+     leaves in English is English here too.
+     Generated from web's copy; edit there, or regenerate. -->
+<resources>
+    <string name="touchpoint_composer_send">傳送訊息</string>
+    <string name="touchpoint_header_title">AI 助理</string>
+    <string name="touchpoint_header_restart">重新開始對話</string>
+    <string name="touchpoint_menu_restart">重新開始對話</string>
+    <string name="touchpoint_menu_download">下載對話記錄</string>
+    <string name="touchpoint_menu_end">結束對話</string>
+    <string name="touchpoint_confirm_end_title">確定嗎？</string>
+    <string name="touchpoint_confirm_end_body">您即將結束目前的對話。此操作無法復原。</string>
+    <string name="touchpoint_confirm_cancel">取消</string>
+    <string name="touchpoint_confirm_end">結束對話</string>
+    <string name="touchpoint_action_start_new">開始新對話</string>
+    <string name="touchpoint_transcript_name_you">您</string>
+    <string name="touchpoint_transcript_name_ai">AI</string>
+    <string name="touchpoint_transcript_name_agent">客服</string>
+    <string name="touchpoint_announcement_received">已收到回覆</string>
+    <string name="touchpoint_delivery_sending">傳送中</string>
+    <string name="touchpoint_delivery_sent">已傳送</string>
+    <string name="touchpoint_delivery_delivered">已送達</string>
+    <string name="touchpoint_delivery_read">已讀</string>
+    <string name="touchpoint_delivery_failed">失敗</string>
+    <string name="touchpoint_guide_label">指南</string>
+    <string name="touchpoint_guide_default_title">指南</string>
+    <string name="touchpoint_guide_not_started">未開始</string>
+    <string name="touchpoint_guide_in_progress">進行中</string>
+    <string name="touchpoint_guide_complete">已完成</string>
+    <string name="touchpoint_guide_loading">正在載入指南…</string>
+    <string name="touchpoint_guide_error">無法載入指南</string>
+    <string name="touchpoint_guide_close">關閉</string>
+    <string name="touchpoint_authentication_heading">請進行驗證</string>
+    <string name="touchpoint_authentication_authenticate">驗證</string>
+    <string name="touchpoint_authentication_skip">不登入繼續</string>
+    <string name="touchpoint_authentication_locked_hint">請先完成或略過驗證，然後再繼續。</string>
+    <string name="touchpoint_authentication_in_progress">驗證進行中</string>
+    <string name="touchpoint_authentication_success">驗證成功</string>
+    <string name="touchpoint_authentication_failed">驗證失敗</string>
+    <string name="touchpoint_authentication_expired">驗證已過期</string>
+    <string name="touchpoint_authentication_cancelled">驗證已取消</string>
+    <plurals name="touchpoint_announcement_choices">
+        <item quantity="other">有 %d 個選項可選</item>
+    </plurals>
+</resources>

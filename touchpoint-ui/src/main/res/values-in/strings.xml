@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Touchpoint web 1.0.4's own translations (src/utils/useCopy.ts), string for string. What web
+     leaves in English is English here too.
+     Generated from web's copy; edit there, or regenerate. -->
+<resources>
+    <string name="touchpoint_composer_send">Kirim pesan</string>
+    <string name="touchpoint_header_title">Asisten AI</string>
+    <string name="touchpoint_header_restart">Mulai ulang percakapan</string>
+    <string name="touchpoint_menu_restart">Mulai ulang percakapan</string>
+    <string name="touchpoint_menu_download">Unduh transkrip</string>
+    <string name="touchpoint_menu_end">Akhiri percakapan</string>
+    <string name="touchpoint_confirm_end_title">Apakah Anda yakin?</string>
+    <string name="touchpoint_confirm_end_body">Anda akan mengakhiri percakapan saat ini. Tindakan ini tidak dapat dibatalkan.</string>
+    <string name="touchpoint_confirm_cancel">Batal</string>
+    <string name="touchpoint_confirm_end">Akhiri percakapan</string>
+    <string name="touchpoint_action_start_new">Mulai percakapan baru</string>
+    <string name="touchpoint_transcript_name_you">Anda</string>
+    <string name="touchpoint_transcript_name_ai">AI</string>
+    <string name="touchpoint_transcript_name_agent">Agen</string>
+    <string name="touchpoint_announcement_received">Respons diterima</string>
+    <string name="touchpoint_delivery_sending">Mengirim</string>
+    <string name="touchpoint_delivery_sent">Terkirim</string>
+    <string name="touchpoint_delivery_delivered">Terkirim ke penerima</string>
+    <string name="touchpoint_delivery_read">Dibaca</string>
+    <string name="touchpoint_delivery_failed">Gagal</string>
+    <string name="touchpoint_guide_label">Panduan</string>
+    <string name="touchpoint_guide_default_title">Panduan</string>
+    <string name="touchpoint_guide_not_started">Belum dimulai</string>
+    <string name="touchpoint_guide_in_progress">Sedang berlangsung</string>
+    <string name="touchpoint_guide_complete">Selesai</string>
+    <string name="touchpoint_guide_loading">Memuat panduan…</string>
+    <string name="touchpoint_guide_error">Tidak dapat memuat panduan</string>
+    <string name="touchpoint_guide_close">Tutup</string>
+    <string name="touchpoint_authentication_heading">Silakan lakukan autentikasi</string>
+    <string name="touchpoint_authentication_authenticate">Autentikasi</string>
+    <string name="touchpoint_authentication_skip">Lanjutkan tanpa masuk</string>
+    <string name="touchpoint_authentication_locked_hint">Selesaikan atau lewati autentikasi sebelum melanjutkan.</string>
+    <string name="touchpoint_authentication_in_progress">Autentikasi sedang berlangsung</string>
+    <string name="touchpoint_authentication_success">Autentikasi berhasil</string>
+    <string name="touchpoint_authentication_failed">Autentikasi gagal</string>
+    <string name="touchpoint_authentication_expired">Autentikasi kedaluwarsa</string>
+    <string name="touchpoint_authentication_cancelled">Autentikasi dibatalkan</string>
+    <plurals name="touchpoint_announcement_choices">
+        <item quantity="other">%d pilihan tersedia</item>
+    </plurals>
+</resources>

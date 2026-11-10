@@ -1,0 +1,123 @@
+# Dependency version floors. Floors, not pins: Gradle resolves the highest version any module
+# in a host's graph asks for, so a host's own resolution may move upward, and a transitive conflict is
+# a build-time failure the integrator cannot work around. Raise a floor only when we depend on
+# something newer. Every library floor here is what the test suite runs against, so it is a tested
+# floor. The stdlib is the exception: kotlin-test follows the compiler, so tests run on its stdlib.
+#
+# What a floor cannot do: stop a host that pins `strictly` (or `force`s) below it. Gradle gives the
+# consuming build the last word, over anything a library publishes — `reject` and strict ranges
+# included, verified. Scripts/check-competing-pins.sh holds both behaviours in place.
+
+[versions]
+# Toolchain. The compiler and AGP are build-time only, but the compiler's *output* is not: its metadata
+# version and the stdlib it links reach every host. So the Kotlin floor below is what a host needs.
+kotlin = "2.4.21"
+agp = "9.5.0"
+
+# The Kotlin floor: a host compiling with Kotlin 2.2 or later can consume this SDK (2.1 is deprecated
+# as a language version). The stdlib floor is the chat SDK 3.0's: it links stdlib 2.3.21.
+# Applied to every module from the root build as languageVersion/apiVersion and coreLibrariesVersion.
+kotlinFloor = "2.2"
+kotlinStdlibFloor = "2.3.21"
+
+# Runtime floors. kotlinx and AndroidX are the language and platform runtime the SDK may depend on.
+# Coroutines is the chat SDK 3.0's floor (1.11.0). Serialization stays where it is: nothing here needs
+# newer, and a floor is raised only for that.
+kotlinxCoroutines = "1.11.0"
+kotlinxSerialization = "1.8.1"
+androidxSqlite = "2.7.1"
+
+# Amazon-published SDKs, consumed from Maven Central as published artifacts
+connectChat = "3.0.0"       # software.aws.connect:amazon-connect-chat-android (AWS SDK for Kotlin; 2.x was on the deprecated AWS Mobile SDK)
+chime = "0.25.5"            # software.aws.chimesdk:amazon-chime-sdk
+chimeMedia = "0.25.4"       # the full media distribution the SDK pairs with; lags the SDK by one patch
+
+# Live Sync's WebSocket and context POST: OkHttp, the one dependency beyond that runtime.
+# The version amazon-connect-chat-android 3.0 already resolves, so a chat host gains nothing.
+okhttp = "5.3.2"
+
+# Core library desugaring, which the chat SDK 3.0 requires of every app that links it.
+desugarJdkLibs = "2.1.5"
+
+# Compose, for the chat UI only (touchpoint-chat). BOM 2026.06.01 = Compose 1.11.4: the newest whose
+# stdlib requirement (2.1.20) stays within the Kotlin floor *and* whose AARs let a host compile against
+# SDK 35. Compose 1.12 demands compileSdk 37 of every app that links it.
+composeBom = "2026.06.01"
+# BackHandler in the chat UI (touchpoint-chat), and the demo app.
+androidxActivity = "1.10.1"
+# Media3, for a video message played in its card (touchpoint-chat), as web's <video>:
+# HLS streams and files. minCompileSdk 36 and stdlib 2.2.10, within the floors.
+media3 = "1.11.1"
+# Custom Tabs, where the chat UI opens a message's link (touchpoint-chat).
+androidxBrowser = "1.8.0"
+
+# Security floors on transitive dependencies (touchpoint-chat), set as constraints, not new
+# dependencies: each is the first release that fixes a known vulnerability in the version a direct
+# dependency asks for. Raise one when a scan flags the floor itself.
+# Gson: the chat SDK 3.0 resolves 2.8.5 (through Retrofit's converter-gson). CVE-2022-25647, fixed in 2.8.9.
+gsonFloor = "2.8.9"
+# Guava: Media3 1.11.1 resolves 33.3.1-android. CVE-2026-102554, fixed in 33.7.2.
+guavaFloor = "33.7.2-android"
+
+# Test-only
+junit = "6.1.3"
+androidxTestExtJunit = "1.3.0"
+androidxTestRunner = "1.7.0"
+# Compose's test library pulls in Espresso 3.5, which calls InputManager.getInstance — removed in
+# Android 17. 3.7 does not; pinned for the instrumented tier only.
+androidxEspresso = "3.7.0"
+
+[libraries]
+androidx-core-telecom = { module = "androidx.core:core-telecom", version = "1.0.1" }  # touchpoint-voice-telecom only: a call that survives the background
+androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version = "2.9.4" }  # demo only: Live Sync follows the app
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+compose-foundation = { module = "androidx.compose.foundation:foundation" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+# The demo app only: a host's screens, never the SDK's.
+compose-material3 = { module = "androidx.compose.material3:material3" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
+androidx-browser = { module = "androidx.browser:browser", version.ref = "androidxBrowser" }
+# Compose UI tests run on the device (make connected), under the instrumented tier's JUnit 4.
+compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+# The Accessibility Test Framework behind enableAccessibilityChecks(): the Android form of an accessibility audit.
+compose-ui-test-junit4-accessibility = { module = "androidx.compose.ui:ui-test-junit4-accessibility" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+okhttp-mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okhttp" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+
+androidx-sqlite = { module = "androidx.sqlite:sqlite", version.ref = "androidxSqlite" }
+androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "androidxSqlite" }
+# The JVM variant by name: an Android module's local unit tests would otherwise resolve the Android
+# variant, whose native library exists only on a device.
+androidx-sqlite-bundled-jvm = { module = "androidx.sqlite:sqlite-bundled-jvm", version.ref = "androidxSqlite" }
+androidx-sqlite-framework = { module = "androidx.sqlite:sqlite-framework", version.ref = "androidxSqlite" }
+
+desugar-jdk-libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugarJdkLibs" }
+media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
+media3-exoplayer-hls = { module = "androidx.media3:media3-exoplayer-hls", version.ref = "media3" }
+media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3" }
+connect-chat = { module = "software.aws.connect:amazon-connect-chat-android", version.ref = "connectChat" }
+# Security floors only: constraints in touchpoint-chat, never declared as dependencies.
+gson = { module = "com.google.code.gson:gson", version.ref = "gsonFloor" }
+guava = { module = "com.google.guava:guava", version.ref = "guavaFloor" }
+chime-sdk = { module = "software.aws.chimesdk:amazon-chime-sdk", version.ref = "chime" }
+chime-media = { module = "software.aws.chimesdk:amazon-chime-sdk-media", version.ref = "chimeMedia" }
+
+kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5", version.ref = "kotlin" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
+# The instrumented tier runs JUnit 4 under AndroidJUnitRunner: JUnit Platform does not run on a device.
+androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidxTestExtJunit" }
+androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTestRunner" }
+androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidxEspresso" }
+
+[plugins]
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+android-application = { id = "com.android.application", version.ref = "agp" }

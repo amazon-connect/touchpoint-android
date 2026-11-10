@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The call notification's words. touchpoint_ prefixed, as every library resource is. -->
+<resources>
+    <!-- The notification channel, as the system's settings list it. -->
+    <string name="touchpoint_telecom_channel">Calls</string>
+    <!-- Under who the call is with, while it goes on. -->
+    <string name="touchpoint_telecom_ongoing">Ongoing call</string>
+</resources>

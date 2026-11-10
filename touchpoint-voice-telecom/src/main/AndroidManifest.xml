@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- What adding this module declares for the host, on purpose (the one exception to library manifests declaring nothing, reviewed in
+     Scripts/check-manifests.sh): the foreground service that keeps the call's microphone and audio
+     going in the background, and its permissions. core-telecom adds MANAGE_OWN_CALLS, which the
+     phoneCall type needs. The host still makes Play's foreground-service declaration. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_PHONE_CALL" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+
+    <application>
+        <service
+            android:name="com.amazon.connect.touchpoint.voice.telecom.TouchpointCallService"
+            android:exported="false"
+            android:foregroundServiceType="phoneCall|microphone" />
+    </application>
+</manifest>

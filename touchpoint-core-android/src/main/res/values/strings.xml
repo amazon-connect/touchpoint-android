@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The SDK's string resources. Every user-facing string the SDK renders is declared here, so
+     localisation is a resource edit, never a code change. Every name carries the touchpoint_ prefix:
+     library resources merge into the host's namespace, and a host resource of the same name wins.
+     Translations live in values-<locale>/ beside this file. -->
+<resources>
+    <!-- Placeholder proving the resources are packaged and resolvable. Not shown to users. -->
+    <string name="touchpoint_placeholder">Touchpoint</string>
+</resources>

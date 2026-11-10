@@ -1,0 +1,3 @@
+int string touchpoint_greeting 0x7f010000
+int color primary 0x7f020000
+int string send 0x7f010001
