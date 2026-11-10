@@ -3,6 +3,12 @@
 All notable changes to the Amazon Connect Customer Touchpoint SDK for Android. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions [Semantic Versioning](https://semver.org/).
 
+## [0.1.1] - 2026-11-10
+
+The first release on Maven Central. 0.1.0 was tagged on GitHub but never published; 0.1.1 has the
+same libraries, and is the first built, signed and uploaded by the repository's release workflow.
+What the SDK gives an app is under 0.1.0.
+
 ## [0.1.0] - 2026-11-10
 
 The first release: Amazon Connect Customer Touchpoint on Android, with Touchpoint for the web's

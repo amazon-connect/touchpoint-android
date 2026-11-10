@@ -49,7 +49,7 @@ api:
 publish-local:
 	$(GRADLE) $(GRADLE_FLAGS) publishAllPublicationsToLocalStagingRepository
 
-#   make release-bundle BUNDLE=build/release/touchpoint-android-0.1.0.zip [GROUP=<dry-run group>]
+#   make release-bundle BUNDLE=build/release/touchpoint-android-0.1.1.zip [GROUP=<dry-run group>]
 release-bundle:
 	sh Scripts/release-bundle.sh $(if $(GROUP),--group $(GROUP)) $(BUNDLE)
 

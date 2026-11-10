@@ -7,5 +7,5 @@ public object Touchpoint {
      * constant is inlined into the host's bytecode, which would report the version it was compiled
      * against rather than the one it runs with.
      */
-    public val VERSION: String = "0.1.0"
+    public val VERSION: String = "0.1.1"
 }

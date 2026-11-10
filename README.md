@@ -53,11 +53,11 @@ repositories {
 }
 
 dependencies {
-    implementation("software.aws.connect:touchpoint-chat:0.1.0")
+    implementation("software.aws.connect:touchpoint-chat:0.1.1")
     // Only as the app needs them:
-    implementation("software.aws.connect:touchpoint-voice:0.1.0")
-    implementation("software.aws.connect:touchpoint-voice-telecom:0.1.0") // calls that go on in the background
-    implementation("software.aws.connect:touchpoint-livesync:0.1.0")
+    implementation("software.aws.connect:touchpoint-voice:0.1.1")
+    implementation("software.aws.connect:touchpoint-voice-telecom:0.1.1") // calls that go on in the background
+    implementation("software.aws.connect:touchpoint-livesync:0.1.1")
 }
 ```
 

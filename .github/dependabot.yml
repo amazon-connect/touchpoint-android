@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # The pinned actions in .github/workflows. The Gradle dependencies' floors are raised by hand, only
+  # when the SDK needs something newer: they are what a host's build resolves against.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]

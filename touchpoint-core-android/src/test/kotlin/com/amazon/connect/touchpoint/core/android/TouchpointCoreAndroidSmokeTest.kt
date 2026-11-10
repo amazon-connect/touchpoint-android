@@ -8,7 +8,7 @@ import kotlin.test.assertNotEquals
 class TouchpointCoreAndroidSmokeTest {
     @Test
     fun `module links against Core`() {
-        assertEquals("0.1.0", Touchpoint.VERSION)
+        assertEquals("0.1.1", Touchpoint.VERSION)
     }
 
     @Test

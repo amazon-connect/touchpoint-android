@@ -5,7 +5,11 @@
 # pipeline later. Every secret is read from Secrets Manager into a private temporary directory, and
 # that directory is deleted on exit; none is printed, and none is passed on a command line.
 #
-#   Scripts/sign-and-upload.sh --sha256 <the bundle's sha256, as release-bundle.sh printed it> <bundle.zip>
+#   Scripts/sign-and-upload.sh --sha256 <the bundle's sha256, as release-bundle.sh printed it> [--confirm <version>] <bundle.zip>
+#
+# Without --confirm it asks for the version to be typed before it uploads. The release workflow passes
+# the version its tag names instead, having checked the tag against the tree: the same confirmation,
+# made where no one is at a terminal.
 #
 # The secrets, by id (override with the variable):
 #   TP_SECRET_PORTAL_USERNAME  touchpoint-android/release/portal-username   Central Portal user token: name
@@ -16,10 +20,13 @@
 # Needs aws, gpg with gpg-agent, curl, zip, unzip, sha256sum and python3. CloudShell has them all but
 # the agent: run `sudo dnf swap -y gnupg2-minimal gnupg2-full` once in each session.
 set -eu
-usage="usage: Scripts/sign-and-upload.sh --sha256 <sha256> <bundle.zip>"
+usage="usage: Scripts/sign-and-upload.sh --sha256 <sha256> [--confirm <version>] <bundle.zip>"
 [ "${1:-}" = --sha256 ] || { echo "$usage" >&2; exit 2; }
 want=${2:?$usage}
-bundle=${3:?$usage}
+shift 2
+confirm=""
+if [ "${1:-}" = --confirm ]; then confirm=${2:?$usage}; shift 2; fi
+bundle=${1:?$usage}
 portal=https://central.sonatype.com/api/v1/publisher
 
 fail() { echo "sign-and-upload: $*" >&2; exit 1; }
@@ -84,9 +91,14 @@ for p in $poms; do
     group=$(dirname "$(dirname "$(dirname "$p")")" | tr / .)
     echo "  $group:$artifact:$version"
 done
-printf 'sign-and-upload: upload these to the Central Portal, to wait for review? Type the version (%s) to go on: ' "$version"
-# No answer (stdin closed, as in a pipeline) is no confirmation, said as such.
-read -r answer || answer=
+if [ -n "$confirm" ]; then
+    answer=$confirm
+    echo "sign-and-upload: confirmed for $confirm"
+else
+    printf 'sign-and-upload: upload these to the Central Portal, to wait for review? Type the version (%s) to go on: ' "$version"
+    # No answer (stdin closed, as in a pipeline) is no confirmation, said as such.
+    read -r answer || answer=
+fi
 [ "$answer" = "$version" ] || fail "not confirmed; nothing was uploaded"
 
 # The portal token, as the bearer credential the Publisher API takes, in a curl config file.

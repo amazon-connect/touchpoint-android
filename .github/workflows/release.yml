@@ -1,0 +1,153 @@
+name: Release
+
+# A release is a tag v<version> on a commit of main. The verify job checks the tag against the tree
+# and that main's CI passed on that exact commit. The publish job then builds the Maven bundle from
+# the tag, signs it, uploads it to the Maven Central Portal to wait for review, and creates the
+# GitHub release with the tag's CHANGELOG.md section as its notes.
+#
+# Publishing on Maven Central stays a person's decision: the upload is USER_MANAGED, so the
+# deployment waits in the portal until someone presses Publish. A published version is permanent.
+#
+# Signing runs in the `release` environment, whose reviewers approve each run. The job assumes an
+# IAM role in the release account through GitHub's OIDC, after the bundle is built, and reads the
+# signing key and the portal token from Secrets Manager: no long-lived secret is kept in GitHub.
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+-*"
+  # For a tag that already exists, such as one pushed before this workflow did.
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: The release tag, v<version>
+        required: true
+
+permissions:
+  contents: read
+
+env:
+  TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+
+concurrency:
+  group: release-${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify the tag
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      sha: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/tags/${{ env.TAG }}
+          fetch-depth: 0 # main, to check the tag is on it
+          persist-credentials: false
+
+      - name: The tag's commit
+        id: commit
+        run: |
+          sha=$(git rev-parse "refs/tags/$TAG^{commit}")
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "release: $TAG is $sha"
+
+      - name: The tag is on main
+        env:
+          SHA: ${{ steps.commit.outputs.sha }}
+        run: |
+          git merge-base --is-ancestor "$SHA" origin/main \
+            || { echo "release: $TAG is not on main; tag a commit of origin/main"; exit 1; }
+
+      - name: The tag matches the version, and CHANGELOG.md dates it
+        run: sh Scripts/check-release-tag.sh "$TAG"
+
+      # Only GitHub Actions' own runs of ci.yml for a push to main count, not a check run any app
+      # could post under the same name.
+      - name: main's CI passed on this commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ steps.commit.outputs.sha }}
+        run: |
+          runs=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/ci.yml/runs?head_sha=$SHA&event=push&branch=main&status=success" --jq '.total_count')
+          [ "$runs" -ge 1 ] \
+            || { echo "release: main's CI (ci.yml) has not passed on $SHA; tag a green commit, or run this workflow again once it has"; exit 1; }
+          echo "release: main's CI passed on $SHA"
+
+  publish:
+    name: Sign, upload and release
+    needs: verify
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    environment: release
+    permissions:
+      contents: write # create the GitHub release
+      id-token: write # assume the release role through OIDC
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.verify.outputs.sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-java@77dd5b2ce225ea11469928ac317850245a74ae78 # v6.2.0
+        with:
+          distribution: corretto
+          java-version: "17"
+
+      - name: Android SDK
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "platforms;android-36" "build-tools;36.1.0" > /dev/null
+
+      # No cache: the release is built from the tag alone.
+      - uses: gradle/actions/setup-gradle@8da46b539cd8fe6ab27ca75128919a18d757604c # v6.4.1
+        with:
+          cache-disabled: true
+
+      - name: Build the bundle
+        id: bundle
+        run: |
+          version=${TAG#v}
+          bundle="build/release/touchpoint-android-$version.zip"
+          mkdir -p build/release
+          sh Scripts/release-bundle.sh "$bundle" | tee build/release-bundle.log
+          sha256=$(sed -n 's/^release-bundle: sha256 \([0-9a-f]*\)$/\1/p' build/release-bundle.log)
+          [ -n "$sha256" ] || { echo "release: release-bundle.sh printed no sha256"; exit 1; }
+          { echo "version=$version"; echo "path=$bundle"; echo "sha256=$sha256"; } >> "$GITHUB_OUTPUT"
+
+      - name: Keep the bundle
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: touchpoint-android-${{ steps.bundle.outputs.version }}
+          path: ${{ steps.bundle.outputs.path }}
+          if-no-files-found: error
+          retention-days: 90
+
+      # Credentials only now, after every build step: nothing the build runs can reach them.
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: ${{ vars.RELEASE_ROLE_ARN }}
+          role-session-name: touchpoint-android-release
+          aws-region: us-east-1
+
+      - name: Sign and upload to the Central Portal
+        env:
+          BUNDLE: ${{ steps.bundle.outputs.path }}
+          SHA256: ${{ steps.bundle.outputs.sha256 }}
+          VERSION: ${{ steps.bundle.outputs.version }}
+        run: sh Scripts/sign-and-upload.sh --sha256 "$SHA256" --confirm "$VERSION" "$BUNDLE"
+
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sh Scripts/check-release-tag.sh --notes "$TAG" > release-notes.md
+          prerelease=""
+          case "$TAG" in v0.*|*-*) prerelease="--prerelease" ;; esac
+          gh release create "$TAG" --repo "$GITHUB_REPOSITORY" --verify-tag --title "$TAG" \
+            --notes-file release-notes.md $prerelease

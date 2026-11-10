@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 class TouchpointCoreSmokeTest {
     @Test
     fun `module exposes a semantic version`() {
-        assertEquals("0.1.0", Touchpoint.VERSION)
+        assertEquals("0.1.1", Touchpoint.VERSION)
     }
 
     @Test
