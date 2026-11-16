@@ -170,6 +170,139 @@ What the backend must get right:
   `ConnectChatTransport.live(context, region, authentication, customChatClient)`. This is web's
   `customChatClient`, and `ChatContactCredentials.participantToken` is then `null`.
 
+#### Using Touchpoint web's endpoints
+
+The app can use the same endpoints as Touchpoint web. Set them up as
+[Touchpoint web's prerequisites](https://github.com/amazon-connect/touchpoint#prerequisites)
+describe: the [StartChatContact API](https://github.com/amazon-connect/amazon-connect-chat-ui-examples/tree/master/cloudformationTemplates/startChatContactAPI)
+for chat and the [StartWebRTCContact sample](https://github.com/amazon-connect/amazon-connect-in-app-calling-examples/tree/main/Backend/AmazonConnectNetraApiSample)
+for voice. If your web page already runs Touchpoint, use the endpoints it already has.
+
+This backend sends the requests web sends and reads the responses web reads. Copy it into your app:
+
+```kotlin
+import com.amazon.connect.touchpoint.core.*
+import java.net.HttpURLConnection
+import java.net.URL
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.json.JSONArray
+import org.json.JSONObject
+
+/** A Touchpoint web backend's chatEndpoint and voiceEndpoint, as a TouchpointBackend. */
+class WebEndpointsBackend(
+    private val chatEndpoint: String,
+    private val voiceEndpoint: String? = null,
+    private val instanceId: String? = null,     // leave null when the endpoints choose the
+    private val contactFlowId: String? = null,  // instance and the flow themselves
+    private val headers: suspend () -> Map<String, String> = { emptyMap() },  // e.g. your auth
+) : TouchpointBackend {
+
+    override suspend fun startChatContact(request: ChatContactRequest): ChatContactCredentials {
+        val body = contactBody(request.displayName, request.attributes)
+            .put("SupportedMessagingContentTypes", JSONArray(listOf(
+                "text/plain", "text/markdown", "application/json",
+                "application/vnd.amazonaws.connect.message.interactive",
+                "application/vnd.amazonaws.connect.message.interactive.response")))
+        val r = post(chatEndpoint, body).optJSONObject("data")?.optJSONObject("startChatResult")
+            ?: throw TouchpointException.InvalidConfiguration("chatEndpoint returned no startChatResult")
+        return ChatContactCredentials(r.field("ContactId"), r.field("ParticipantId"),
+            r.field("ParticipantToken"), expiresAt = null)
+    }
+
+    override suspend fun startVoiceContact(request: VoiceContactRequest): VoiceContactCredentials {
+        val endpoint = voiceEndpoint ?: throw TouchpointException.InvalidConfiguration("no voiceEndpoint")
+        val body = contactBody(request.displayName, request.attributes)
+            .put("ConnectInstanceId", instanceId).put("DisplayName", request.displayName)
+            .put("ClientToken", request.clientToken)
+        if (request.screenShare) {
+            val send = { JSONObject().put("ScreenShare", "SEND") }
+            body.put("screenShare", true)
+                .put("AllowedCapabilities", JSONObject().put("Customer", send()).put("Agent", send()))
+        }
+        // The envelopes web accepts: the result at the top level, under `data`, or under a result key.
+        val json = post(endpoint, body)
+        val data = json.optJSONObject("data")
+        val r = data?.optJSONObject("startWebRtcResult") ?: data?.optJSONObject("startWebRTCContactResult")
+            ?: json.optJSONObject("startWebRtcResult") ?: json.optJSONObject("startWebRTCContactResult")
+            ?: data ?: json
+        val c = r.optJSONObject("ConnectionData") ?: r.optJSONObject("connectionData") ?: r
+        return VoiceContactCredentials(r.field("ContactId"), r.field("ParticipantId"), r.field("ParticipantToken"),
+            meetingJson = c.child("Meeting").toString(), attendeeJson = c.child("Attendee").toString(),
+            expiresAt = null)
+    }
+
+    override suspend fun liveSyncCredentials(): LiveSyncCredentials =
+        throw TouchpointException.InvalidConfiguration("a Touchpoint web backend has no Live Sync endpoint")
+
+    // Web's request body. A null id is left out, for endpoints that set it themselves.
+    private fun contactBody(displayName: String, attributes: Map<String, String>) = JSONObject()
+        .put("InstanceId", instanceId).put("ContactFlowId", contactFlowId)
+        .put("ParticipantDetails", JSONObject().put("DisplayName", displayName))
+        .put("Attributes", JSONObject(attributes))
+
+    private suspend fun post(endpoint: String, body: JSONObject): JSONObject {
+        val extra = headers()
+        return withContext(Dispatchers.IO) {
+            val http = URL(endpoint).openConnection() as HttpURLConnection
+            try {
+                http.requestMethod = "POST"
+                http.doOutput = true
+                http.connectTimeout = 15_000
+                http.readTimeout = 30_000
+                http.setRequestProperty("Content-Type", "application/json")
+                extra.forEach { (name, value) -> http.setRequestProperty(name, value) }
+                http.outputStream.use { it.write(body.toString().toByteArray()) }
+                if (http.responseCode !in 200..299) {
+                    throw TouchpointException.InvalidConfiguration("$endpoint returned ${http.responseCode}")
+                }
+                JSONObject(http.inputStream.bufferedReader().use { it.readText() })
+            } finally {
+                http.disconnect()
+            }
+        }
+    }
+
+    // Web accepts both capitalisations: ContactId and contactId.
+    private fun JSONObject.field(name: String): String =
+        optString(name).ifEmpty { optString(name.replaceFirstChar { it.lowercase() }) }
+            .ifEmpty { throw TouchpointException.InvalidConfiguration("the endpoint's response has no $name") }
+
+    private fun JSONObject.child(name: String): JSONObject =
+        optJSONObject(name) ?: optJSONObject(name.replaceFirstChar { it.lowercase() })
+            ?: throw TouchpointException.InvalidConfiguration("the endpoint's response has no $name")
+}
+```
+
+Then use it wherever this guide uses `MyBackend`:
+
+```kotlin
+val backend = WebEndpointsBackend(
+    chatEndpoint = "https://example.execute-api.us-west-2.amazonaws.com/prod/chat",
+    voiceEndpoint = "https://example.execute-api.us-west-2.amazonaws.com/prod/voice",
+    instanceId = "your-instance-id",
+    contactFlowId = "your-contact-flow-id",
+)
+```
+
+The rest of web's config maps to the session:
+
+| Touchpoint web | Android |
+| --- | --- |
+| `chatEndpoint`, `voiceEndpoint` | `WebEndpointsBackend(chatEndpoint, voiceEndpoint)` |
+| `instanceId`, `contactFlowId` | `WebEndpointsBackend(instanceId, contactFlowId)`. Leave them out if your endpoints set them, as the StartWebRTCContact sample does. |
+| `region` | `ConnectChatTransport.live(context, region)` |
+| `participantDisplayName`, `contactAttributes` | `ChatContactRequest(displayName, attributes)`; for voice, `TouchpointVoiceCall(…, displayName, attributes)` |
+| `screenShare` | `TouchpointVoiceCall(…, allowsScreenShare = true)` |
+
+If you put authentication in front of the endpoints, pass it through `headers`, for example
+`headers = { mapOf("Authorization" to "Bearer ${session.token()}") }`. Both samples are for demos,
+as their READMEs say. For production, the list above applies to your endpoints too.
+
+Web has no Live Sync endpoint, so `liveSyncCredentials()` fails with
+`TouchpointException.InvalidConfiguration`. To use Live Sync, return its credentials there from
+your own service.
+
 `DevelopmentBackend` takes literal Live Sync keys, so you can try Live Sync before your backend
 exists. It isn't published to Maven Central: its source is in this repository's
 `touchpoint-development/` module. To use it, copy `DevelopmentBackend.kt` into your app's
@@ -185,7 +318,7 @@ import com.amazon.connect.touchpoint.chat.ui.TouchpointChatSheet
 import com.amazon.connect.touchpoint.core.*
 import com.amazon.connect.touchpoint.core.android.AndroidStores
 
-suspend fun makeChatSession(context: Context, backend: MyBackend): TouchpointSession {
+suspend fun makeChatSession(context: Context, backend: TouchpointBackend): TouchpointSession {
     val keys = AndroidStores.secureStore(context)                // Keystore-backed
     val store = AndroidStores.conversationStore(context, keys)   // one per process
     val chat = ConnectChatTransport.live(context, region = "us-west-2")   // your instance's Region
@@ -218,6 +351,9 @@ fun SupportButton(session: TouchpointSession) {
   or MINI, and its default is full on a phone and a half panel on a tablet. `collapseToMini`
   makes the header's close drop it to a floating card. To place the chat yourself, use
   `TouchpointChatView`; the keyboard inset (`Modifier.imePadding()`) is then yours to apply.
+- **Declare `android:windowSoftInputMode="adjustResize"`** on the activity that shows the chat.
+  Without it, the keyboard pans the window, and the header and transcript slide off the top of the
+  screen.
 - **The session reconnects on its own** and resends unacknowledged messages.
 - **`end()` ends the contact.** `resume(contactId)` reopens a chat that is still live after the
   process died. Ended chats and calls can't be resumed.
