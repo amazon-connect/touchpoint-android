@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Debug only: in-app voice runs in live mode, which release builds do not compile. The microphone,
+     asked for when a call starts, and the call's audio routing (touchpoint-voice). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <!-- The showcase's deep link to a call made from the phone: acmebank://support/livesync/<contact id>.
+         Debug only, as an unauthenticated link is a bearer credential for the conversation; a bank
+         resolves the contact through its own backend (TouchpointContactIdResolver). -->
+    <application>
+        <!-- singleTask: the sign-in page's redirect returns to this activity, closing the Custom Tab
+             above it, rather than opening a second one over the page. -->
+        <activity android:name=".MainActivity" android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="acmebank" android:host="support" android:pathPrefix="/livesync" />
+            </intent-filter>
+            <!-- Connect's sign-in (Authenticate Customer) comes back here from the identity provider's
+                 page: the scheme is the host's to declare, and live mode is debug only. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="acmebank-touchpoint" android:host="auth" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

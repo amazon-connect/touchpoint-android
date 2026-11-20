@@ -3,6 +3,14 @@
 All notable changes to the Amazon Connect Customer Touchpoint SDK for Android. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Acme Bank demo app (`demo/acme-bank`): a fictional bank that uses the SDK through its public API,
+  offline with a scripted agent or live against the demo backend in touchpoint-ios `Demo/backend`,
+  with five Live Sync actions and no submit action.
+
 ## [0.1.1] - 2026-11-11
 
 The first release on Maven Central. 0.1.0 was tagged on GitHub but never published; 0.1.1 has the
