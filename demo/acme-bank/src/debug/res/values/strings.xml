@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Live mode's strings: debug builds only, with the code that shows them, so a release APK carries
+     neither. -->
+<resources>
+    <string name="live_header">Live mode credentials (debug)</string>
+    <string name="live_endpoint">Demo backend endpoint</string>
+    <string name="live_region">Region</string>
+    <string name="live_access_key">Access key ID</string>
+    <string name="live_secret_key">Secret access key</string>
+    <string name="live_session_token">Session token</string>
+    <string name="live_deployment_key">Live Sync deployment key</string>
+    <string name="live_livesync_key">Live Sync application API key</string>
+    <string name="live_callback_number">Number to call for voice mode (E.164)</string>
+    <string name="live_voice_by_phone">Ring my phone instead of calling in the app</string>
+    <string name="live_footer">Temporary IAM credentials for the demo backend, held in memory for this run only. A production app never carries IAM credentials; its own backend vends the participant token.</string>
+</resources>

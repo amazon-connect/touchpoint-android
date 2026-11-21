@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Acme Bank's own strings. The demo is host code, so its names carry no touchpoint_ prefix; the
+     SDK's strings (touchpoint_*) merge in alongside and a host may override any of them here. -->
+<resources>
+
+    <!-- Sign in -->
+    <string name="signin_subtitle">Demo — all data is synthetic</string>
+    <string name="signin_username">Username</string>
+    <string name="signin_password">Password</string>
+    <string name="signin_submit">Sign in</string>
+    <string name="signin_hint">Any username and password work in the demo.</string>
+    <string name="signin_hint_live">Sign in with your demo account.</string>
+    <string name="signin_failed">Sign-in failed.</string>
+    <string name="signin_keys_not_saved">Couldn\'t save the Live Sync keys on this device. Try again.</string>
+    <string name="signin_keys">Live Sync keys</string>
+    <string name="signin_keys_saved">Live Sync keys (saved)</string>
+    <string name="signin_deployment_key">Deployment key</string>
+    <string name="signin_api_key">API key</string>
+    <string name="signin_keys_footer">From the Live Sync application\'s Settings → Access. Kept on this device, in its Keystore-backed store.</string>
+    <string name="signin_forget_keys">Forget these keys</string>
+
+    <!-- Navigation -->
+    <string name="nav_back">Back</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Accounts -->
+    <string name="accounts_title">Accounts</string>
+    <string name="accounts_greeting">Good day, %1$s</string>
+    <string name="account_kind_chequing">Chequing</string>
+    <string name="account_kind_savings">Savings</string>
+    <string name="account_kind_credit_card">Credit card</string>
+    <!-- An account's kind, then its masked number. -->
+    <string name="account_subtitle">%1$s %2$s</string>
+
+    <!-- Transactions -->
+    <string name="transactions_balance">Balance</string>
+    <string name="transactions_recent">Recent activity</string>
+    <string name="transactions_matching">Matching the charge you described</string>
+    <string name="transactions_show_all">Show all</string>
+
+    <!-- Transaction detail -->
+    <string name="detail_title">Transaction</string>
+    <string name="detail_merchant">Merchant</string>
+    <string name="detail_amount">Amount</string>
+    <string name="detail_date">Date</string>
+    <string name="detail_account">Account</string>
+    <string name="detail_category">Category</string>
+    <string name="detail_dispute">Dispute this transaction</string>
+    <string name="detail_dispute_footer">Disputes are reviewed within five business days. Nothing is submitted until you confirm.</string>
+
+    <string name="category_groceries">Groceries</string>
+    <string name="category_subscriptions">Subscriptions</string>
+    <string name="category_automotive">Automotive</string>
+    <string name="category_dining">Dining</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_health">Health</string>
+    <string name="category_payment">Payment</string>
+    <string name="category_income">Income</string>
+    <string name="category_housing">Housing</string>
+    <string name="category_transfer">Transfer</string>
+    <string name="category_utilities">Utilities</string>
+
+    <!-- Dispute -->
+    <string name="dispute_title">Dispute</string>
+    <string name="dispute_section_transaction">Transaction</string>
+    <string name="dispute_section_reason">Reason</string>
+    <string name="dispute_section_card">Your card</string>
+    <string name="dispute_reason_unrecognised">I don\'t recognise this charge</string>
+    <string name="dispute_reason_duplicate">I was charged twice</string>
+    <string name="dispute_reason_wrong_amount">The amount is wrong</string>
+    <string name="dispute_reason_cancelled">I cancelled this service</string>
+    <string name="dispute_reason_not_received">I didn\'t receive what I paid for</string>
+    <string name="dispute_reason_other">Something else</string>
+    <string name="dispute_card_have">I still have my card</string>
+    <string name="dispute_card_lost">My card is lost</string>
+    <string name="dispute_card_stolen">My card was stolen</string>
+    <string name="dispute_authorised">I authorised this charge</string>
+    <string name="dispute_details">Anything else we should know?</string>
+    <string name="dispute_submit">Submit dispute</string>
+    <string name="dispute_footer">Review the details above, then tap Submit. Support can help you fill this in but cannot submit it for you.</string>
+    <string name="dispute_submitted">Submitted. Reference ACME-%1$s-DEMO. We\'ll be in touch within five business days.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_livesync_header">Live Sync</string>
+    <string name="settings_livesync_ask_again">Ask me again</string>
+    <string name="settings_livesync_footer">When you allow it, the assistant on a call can see which screen you\'re on and fill in forms for you. You\'re asked the first time it joins; nothing is ever submitted without you.</string>
+    <!-- Debug builds: the SDK's Live Sync overlay, over the bank's screens. -->
+    <string name="settings_livesync_overlay">Show the Live Sync overlay</string>
+    <!-- The SDK's screen-share redaction, shown on the balances. -->
+    <string name="settings_mask_balances">Mask balances when sharing your screen</string>
+    <string name="settings_mask_balances_footer">During a call\'s screen share, the agent sees your balances as black boxes.</string>
+    <string name="settings_chat_header">Chat</string>
+    <string name="settings_partner_look">Partner bank look</string>
+    <string name="settings_partner_look_footer">A partner bank\'s web configuration: its colours, header, bordered bubbles, times, names and avatars, a recording notice, and a header Close that asks before ending, in its own words. Kept across launches. While it is on, the switches below do nothing.</string>
+    <string name="settings_chat_times">Show message times</string>
+    <string name="settings_chat_brand_header">Brand header</string>
+    <string name="settings_chat_participant_info">Show names and avatars</string>
+    <string name="settings_chat_agent_bubbles">Assistant replies in bubbles</string>
+    <string name="settings_design_header">Design review</string>
+    <string name="settings_chat_brand">Header brand</string>
+    <string name="settings_appearance_header">Appearance</string>
+    <string name="settings_appearance_system">System</string>
+    <string name="settings_appearance_light">Light</string>
+    <string name="settings_appearance_dark">Dark</string>
+    <string name="settings_appearance_footer">System follows the phone; the partner bank look stays light, as its configuration asks.</string>
+    <string name="settings_chat_brand_none">None</string>
+    <string name="settings_chat_brand_logo">Logo</string>
+    <string name="settings_chat_brand_logo_and_name">Logo + name</string>
+    <string name="settings_design_avatar_logo">Acme logo as the assistant\'s avatar</string>
+    <string name="settings_design_square_avatars">Square avatars</string>
+    <string name="settings_design_slow_motion">Slow motion</string>
+    <string name="settings_design_footer">A wide logo shows whole only in the mini chat; the sheet fits it into a square, as web does. Avatars show with Show names and avatars. Slow motion makes the offline agent take three times as long, so connecting, interim lines and receipts can be filmed.</string>
+    <string name="settings_mode_header">Support mode (debug)</string>
+    <string name="settings_mode_footer">Offline needs nothing. Live reaches a real Amazon Connect agent through the demo credential backend.</string>
+    <string name="settings_mode_offline">Offline (scripted agent)</string>
+    <string name="settings_mode_live">Live (Amazon Connect)</string>
+    <string name="settings_sign_out">Sign out</string>
+    <string name="settings_livesync_debug_header">Live Sync (debug)</string>
+    <!-- The connection state, then the first characters of the contact id. -->
+    <string name="settings_livesync_debug_state">State %1$s · contact %2$s</string>
+    <string name="settings_livesync_connect">Connect</string>
+    <string name="settings_livesync_disconnect">Disconnect</string>
+    <!-- Shown and spoken when the assistant acts on the app, e.g. "Assistant: open account". -->
+    <string name="assistant_cue">Assistant: %1$s</string>
+
+    <!-- Support dock -->
+    <string name="support_open">Talk to AI Assistant</string>
+    <string name="support_call_us">Call us</string>
+    <string name="support_open_hint">Opens a chat with %1$s support</string>
+    <string name="support_panel">%1$s support</string>
+    <string name="support_expand">Expand support</string>
+    <string name="support_shrink">Shrink support</string>
+    <string name="support_connecting">Connecting you to support…</string>
+    <string name="support_retry">Try again</string>
+    <string name="support_suggested">Suggested replies</string>
+    <string name="support_voice">Voice mode</string>
+    <string name="support_voice_unavailable">Coming with outbound calling</string>
+    <string name="support_voice_calling">Calling your phone…</string>
+    <string name="support_voice_calling_hint">Answer and put it on speaker. Then come back here — tap %1$s, don\'t close it.</string>
+    <string name="support_voice_on_call">On the call</string>
+    <string name="support_voice_on_call_hint">Talk on your phone. The assistant can open accounts, find a charge and start a dispute here; only you can submit.</string>
+    <string name="support_voice_failed">Could not place the call</string>
+    <string name="support_voice_call_again">Call me again</string>
+    <string name="support_voice_type_instead">Type instead</string>
+    <string name="support_voice_switch">Switch to voice</string>
+    <string name="support_reply_channel">Support replies</string>
+    <string name="support_reply_title">%1$s support</string>
+    <string name="support_reply_body">You have a new message.</string>
+    <string name="support_voice_minimise">Minimise</string>
+    <string name="support_voice_close">Minimise support; the call continues</string>
+    <string name="reply_card">Where is my replacement card?</string>
+    <string name="reply_charge">I don\'t recognise a charge</string>
+    <string name="reply_password">Reset my password</string>
+    <!-- The showcase flow's own modality, AcmeDisputeSummary. -->
+    <string name="dispute_summary">Dispute summary</string>
+    <string name="dispute_merchant">Merchant</string>
+    <string name="dispute_amount">Amount</string>
+    <string name="dispute_status">Status</string>
+
+    <!-- The agent console (offline only): the developer plays the other side of the chat. -->
+    <string name="console_open">Agent console</string>
+    <string name="console_title">Agent console</string>
+    <string name="console_subtitle">Play the other side of the offline chat: send as the assistant or the agent, and see what the SDK draws.</string>
+    <string name="console_auto_replies">Tour replies automatically</string>
+    <string name="console_section_message">Message</string>
+    <string name="console_text">Message text</string>
+    <string name="console_say_assistant">Send as assistant</string>
+    <string name="console_say_agent">Send as agent</string>
+    <string name="console_choices">Choices</string>
+    <string name="console_choices_hint">Separated by commas, sent under the message text</string>
+    <string name="console_offer_choices">Send with choices</string>
+    <string name="console_section_modalities">Rich content</string>
+    <string name="console_modality_card">Card</string>
+    <string name="console_modality_carousel">Carousel</string>
+    <string name="console_modality_date">Date input</string>
+    <string name="console_modality_video">Video</string>
+    <string name="console_modality_markdown">Formatted text</string>
+    <string name="console_modality_guide">Guide card</string>
+    <string name="console_modality_sign_in">Sign-in card</string>
+    <string name="console_modality_file">File from agent</string>
+    <string name="console_section_agent">Agent</string>
+    <string name="console_agent_joins">Agent joins</string>
+    <string name="console_agent_leaves">Agent leaves</string>
+    <string name="console_typing_agent">Agent typing</string>
+    <string name="console_typing_assistant">Assistant typing</string>
+    <string name="console_delivered">Delivered</string>
+    <string name="console_read">Read</string>
+    <string name="console_section_contact">Contact</string>
+    <string name="console_drop">Drop connection</string>
+    <string name="console_end">End contact</string>
+    <string name="console_sent">Sent.</string>
+    <string name="console_not_sent">Not sent: receipts and the agent typing need the agent on the chat, and a message needs text.</string>
+    <string name="console_not_connected">Not sent: no chat is connected. Open Support first.</string>
+</resources>

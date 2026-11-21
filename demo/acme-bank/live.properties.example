@@ -1,0 +1,9 @@
+# Live mode (debug builds only). Copy to demo/acme-bank/live.properties (gitignored) and fill in the
+# values `npm run app-config` prints for Android in the demo backend (touchpoint-ios Demo/backend).
+# Identifiers only: never put a key, password or credential in this file.
+endpoint=https://REPLACE_ME.execute-api.REPLACE_ME.amazonaws.com
+region=REPLACE_ME
+userPoolId=REPLACE_ME
+clientId=REPLACE_ME
+identityPoolId=REPLACE_ME
+connectInstanceUrl=https://REPLACE_ME.my.connect.aws
