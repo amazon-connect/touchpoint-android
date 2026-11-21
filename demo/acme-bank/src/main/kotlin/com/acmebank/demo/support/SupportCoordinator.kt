@@ -124,7 +124,8 @@ class SupportCoordinator(private val context: Context) {
                 try {
                     val id = LiveMode.placeCall(mapOf("screen" to currentScreen, "app" to "AcmeBank", "platform" to "android"))
                     val ls = liveSync
-                    if (ls != null && ls.isConfigured) ls.bind(id, currentScreen)
+                    // A voice contact: no dispatch gate (LiveSyncCoordinator.bind says why).
+                    if (ls != null && ls.isConfigured) ls.bind(id, currentScreen, gate = false)
                     Voice.OnCall
                 } catch (e: TouchpointException) {
                     Voice.Failed(describe(e))
@@ -229,7 +230,8 @@ class SupportCoordinator(private val context: Context) {
                 session.contactId
             } ?: return
         val ls = liveSync
-        if (mode == Mode.LIVE && ls != null && ls.isConfigured) ls.bind(id, currentScreen)
+        // A voice contact: no dispatch gate (LiveSyncCoordinator.bind says why). Chat keeps it.
+        if (mode == Mode.LIVE && ls != null && ls.isConfigured) ls.bind(id, currentScreen, gate = false)
     }
 
     private suspend fun ensureSession(): TouchpointSession =

@@ -9,7 +9,8 @@ All notable changes to the Amazon Connect Customer Touchpoint SDK for Android. T
 
 - Acme Bank demo app (`demo/acme-bank`): a fictional bank that uses the SDK through its public API,
   offline with a scripted agent or live against the demo backend in touchpoint-ios `Demo/backend`,
-  with five Live Sync actions and no submit action.
+  with five Live Sync actions and no submit action. Live Sync stays active on voice calls, as in the
+  iOS demo: they do not attach the SDK's human-agent gate, which chat keeps (see the demo's README).
 
 ## [0.1.1] - 2026-11-11
 

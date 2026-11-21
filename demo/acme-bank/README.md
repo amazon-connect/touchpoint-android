@@ -30,6 +30,31 @@ Support opens in voice: the SDK's `TouchpointVoiceView`, an in-app call through 
 rings the customer, is the `voiceByPhone` seed key, with `callbackNumber`); nothing fakes rich cards. The bank's screens are Material 3 — the
 host's choice; the SDK links no Material.
 
+**Voice calls and Live Sync.** Live Sync lets the assistant move the bank's screens while the
+customer talks to it. The SDK has a safety gate for this: once the Live Sync client is attached to
+the support session, the SDK pauses Live Sync as soon as a human agent joins the contact, so a person
+on the contact is never overridden by the assistant; actions that arrive while paused are dropped.
+Chat uses the gate. Voice calls (the in-app call and the phone call) do not attach it. On an in-app
+WebRTC call the SDK counts Connect's own side of the call as a human agent, so with the gate attached
+Live Sync pauses the moment the call connects, while only the AI agent is talking, and the screens
+never move. The iOS demo does not attach its Live Sync client to the session either, so both demos
+behave the same. The cost: if a human agent joins a voice call, the assistant is not paused and the
+screens can keep moving while the agent is on. In chat a human agent still pauses it. This should be
+revisited once the SDK can tell a call's AI agent from a human agent; voice can then use the gate
+like chat.
+
+To watch Live Sync in a debug build, open Settings → Live Sync (debug): it shows the connection
+state and a log of each step (`gate → attached` or `gate → not attached (voice)`, `state → …`,
+`context → …`, `dispatch → …`, and each action the assistant sends). Debug builds also write the same
+lines to logcat under the tag `AcmeLiveSync`; release builds do not, and the lines never hold keys:
+
+```sh
+adb logcat -v time AcmeLiveSync:I *:S
+```
+
+On a working voice call the log shows `gate → not attached (voice)`, `state → Connected`, the
+actions as the assistant sends them, and no `dispatch → SUSPENDED`.
+
 **Tests.** The unit tier pins the fixture's relative dates ("about $240, last Tuesday" must keep
 matching) and measures the palette against WCAG AA. The instrumented tier signs in, opens Support,
 sends a message and waits for the scripted reply with the Accessibility Test Framework checking

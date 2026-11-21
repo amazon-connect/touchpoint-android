@@ -102,6 +102,8 @@ dependencies {
     testImplementation(libs.junit.jupiter)
     testImplementation(libs.kotlin.test.junit5)
     testImplementation(libs.kotlinx.coroutines.test)
+    // A real TouchpointSession in the Live Sync gate test needs its store's SQLite on the JVM.
+    testImplementation(libs.androidx.sqlite.bundled.jvm)
     testRuntimeOnly(libs.junit.platform.launcher)
 
     androidTestImplementation(platform(libs.compose.bom))

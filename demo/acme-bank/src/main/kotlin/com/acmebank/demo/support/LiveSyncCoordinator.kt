@@ -88,9 +88,28 @@ class LiveSyncCoordinator(private val context: Context, private val app: AppMode
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     private val time = DateTimeFormatter.ofPattern("HH:mm:ss")
 
-    /** Binds to [contactId]; the screen on show is advertised as it declares its actions. */
-    fun bind(contactId: String, @Suppress("UNUSED_PARAMETER") screen: String) {
+    /** Whether the current binding is registered with the session's dispatch gate; see [bind]. */
+    private var gated = true
+
+    /**
+     * Binds to [contactId]; the screen on show is advertised as it declares its actions.
+     *
+     * [gate]: register the client with the session's dispatch gate (`LiveSyncClient.attach`). The gate
+     * suspends Live Sync dispatch when a human agent joins the contact, so the assistant stops driving
+     * the screens while a person is on; invocations that arrive while suspended are dropped.
+     *
+     * Chat keeps the gate. Voice calls pass `false`. On an in-app WebRTC voice call the SDK classifies
+     * Connect's own leg of the call as a human attendee, so the gate suspends dispatch as soon as the
+     * call connects, while only the AI agent is speaking, and no action ever arrives. The iOS demo does
+     * not attach its Live Sync client to the session either, so this matches it.
+     *
+     * The trade-off: a human agent who joins a voice call does not pause the assistant, and the screens
+     * can keep moving while the agent is on. Chat still pauses for a human agent. Revisit this once the
+     * SDK can tell a call's AI leg from a human agent; voice can then keep the gate like chat.
+     */
+    fun bind(contactId: String, @Suppress("UNUSED_PARAMETER") screen: String, gate: Boolean = true) {
         this.contactId = contactId
+        gated = gate
         connect()
     }
 
@@ -120,8 +139,9 @@ class LiveSyncCoordinator(private val context: Context, private val app: AppMode
         c.onNavigation = { note("navigation ${it.kind} (not acted on)") }
         c.onDispatchStateChange = { state, reason -> note("dispatch → $state${reason?.let { " ($it)" }.orEmpty()}") }
         // The gate: registered with the session, so an agent joining suspends dispatch, and a client
-        // made while one is on the contact starts suspended.
-        session()?.let(c::attach)
+        // made while one is on the contact starts suspended. Not on voice (see bind).
+        attachGate(c, session(), gated)
+        note(if (gated) "gate → attached" else "gate → not attached (voice)")
         stateWatch = scope.launch { c.connectionState.collect { s -> state = s; note("state → ${s.javaClass.simpleName}") } }
         client = c
         c.connect()
@@ -208,12 +228,25 @@ class LiveSyncCoordinator(private val context: Context, private val app: AppMode
         val confirmationMessage: String? get() = CONFIRMED[name]
     }
 
+    /**
+     * Adds [text] to the in-app log (Settings > Live Sync (debug)). Debug builds only also mirror it to
+     * logcat under the tag `AcmeLiveSync`; release builds do not. Notes never carry keys or credentials,
+     * and a contact id appears only as its first 8 characters.
+     */
     private fun note(text: String) {
         log += "${LocalTime.now().format(time)}  $text"
         if (log.size > LOG_LIMIT) log.removeRange(0, log.size - LOG_LIMIT)
+        if (com.acmebank.demo.BuildConfig.DEBUG) android.util.Log.i(LOG_TAG, text)
     }
 
     companion object {
+        private const val LOG_TAG = "AcmeLiveSync"
+
+        /** Registers [client] with [session]'s dispatch gate when [gate] is set; voice bindings pass `false` ([bind]). */
+        internal fun attachGate(client: LiveSyncClient, session: com.amazon.connect.touchpoint.core.TouchpointSession?, gate: Boolean) {
+            if (gate) session?.let(client::attach)
+        }
+
         /**
          * What the customer is asked before each of these runs. Empty for now: with confirmation on,
          * the Live Sync engine never delivers `start_dispute` (an SDK issue), so the dispute screen
